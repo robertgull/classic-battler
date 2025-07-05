@@ -10,7 +10,7 @@ def extract_mop_battle_pets():
         for offset in range(0, 900, 100):
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-
+            page.set_default_timeout(90000)
             url = f"https://www.wowhead.com/mop-classic/battle-pets#petspecies;{offset}" if offset else "https://www.wowhead.com/mop-classic/battle-pets#petspecies"
             print(f"Scraping: {url}")
             page.goto(url, wait_until="networkidle")
@@ -23,8 +23,17 @@ def extract_mop_battle_pets():
                 if not cells or len(cells) < 11:
                     continue
 
-                name_link = cells[1].query_selector("a")
+                name_cell = cells[1]
+                name_link = name_cell.query_selector("a")
+
                 name = name_link.inner_text().strip() if name_link else ""
+                pet_id = None
+                if name_link:
+                    href = name_link.get_attribute("href")
+                    match = re.search(r"npc=(\d+)", href or "")
+                    if match:
+                        pet_id = int(match.group(1))
+                print(f"Processing pet: {name} (ID: {pet_id})")
                 is_untameable = "untameable" in cells[1].inner_text().lower()
                 level = cells[2].inner_text().strip()
                 health = cells[3].inner_text().strip()
@@ -51,14 +60,14 @@ def extract_mop_battle_pets():
                 popularity = int(match.group(1)) if match else None
 
                 data.append([
-                    name, level, health, power, speed, breed,
+                    pet_id, name, level, health, power, speed, breed,
                     abilities, source, _type, popularity, is_untameable
                 ])
 
             browser.close()
 
     df = pd.DataFrame(data, columns=[
-        "Name", "Level", "Health", "Power", "Speed", "Breed",
+        "ID", "Name", "Level", "Health", "Power", "Speed", "Breed",
         "Abilities", "Source", "Type", "Popularity", "Untameable"
     ])
     df.to_csv(r"C:\Users\Rober\repos\classic-battler\data\mop_battle_pets.csv", index=False)
@@ -74,7 +83,7 @@ def extract_mop_battle_pet_abilities():
         for offset in range(0, 900, 100):
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-
+            page.set_default_timeout(90000)
             url = f"https://www.wowhead.com/battle-pet-abilities#{offset}" if offset else "https://www.wowhead.com/battle-pet-abilities"
             print(f"Scraping: {url}")
             page.goto(url, wait_until="networkidle")
@@ -87,7 +96,18 @@ def extract_mop_battle_pet_abilities():
                 if not cells or len(cells) < 8:
                     continue
 
-                name = cells[1].inner_text().strip()
+                name_cell = cells[1]
+                link = name_cell.query_selector("a")
+
+                name = name_cell.inner_text().strip()
+                ability_id = None
+                if link:
+                    href = link.get_attribute("href")
+                    match = re.search(r"pet-ability=(\d+)", href or "")
+                    if match:
+                        ability_id = int(match.group(1))
+
+                print(f"Processing ability: {name} (ID: {ability_id})")
                 damage = cells[2].inner_text().strip()
                 healing = cells[3].inner_text().strip()
                 duration = cells[4].inner_text().strip()
@@ -105,11 +125,11 @@ def extract_mop_battle_pet_abilities():
                         popularity = int(match.group(1))
 
                 ability_data.append([
-                    name, damage, healing, duration, cooldown, accuracy, _type, popularity
+                    ability_id, name, damage, healing, duration, cooldown, accuracy, _type, popularity
                 ])
             browser.close()
     df = pd.DataFrame(ability_data, columns=[
-        "Name", "Damage", "Healing", "Duration", "Cooldown", "Accuracy", "Type", "Popularity"
+        "ID", "Name", "Damage", "Healing", "Duration", "Cooldown", "Accuracy", "Type", "Popularity"
     ])
     df.to_csv(r"C:\Users\Rober\repos\classic-battler\data/mop_battle_pet_abilities.csv", index=False)
     print("Saved to mop_battle_pet_abilities.csv")

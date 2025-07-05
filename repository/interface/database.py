@@ -1,14 +1,19 @@
 from pathlib import Path
 from typing import Protocol
-from core.models import Ability, BattlePet
+from core.models import Ability, BattlePet, PetType
+
 
 class DbBase(Protocol):
-    async def get_battle_pet(self, name: str) -> BattlePet:
+    async def get_battle_pet(self, _id: int) -> BattlePet:
         """Retrieve a battle pet by its name."""
         pass
 
-    async def get_ability(self, name: str) -> Ability:
+    async def get_ability(self, _id: int) -> Ability:
         """Retrieve an ability by its name."""
+        pass
+
+    async def get_abilities_by_ids(self, ids: list[int]) -> list[Ability]:
+        """Retrieve abilities by their IDs."""
         pass
 
     async def add_battle_pet(self, pet: BattlePet) -> None:
@@ -31,10 +36,10 @@ class DbBase(Protocol):
         """Retrieve all abilities from the database."""
         pass
 
-    async def get_battle_pet_by_type(self, pet_type: str) -> list[BattlePet]:
+    async def get_battle_pet_by_type(self, pet_type: PetType) -> list[BattlePet]:
         """Retrieve all battle pets of a specific type."""
         pass
 
-    async def get_ability_by_type(self, ability_type: str) -> list[Ability]:
+    async def get_ability_by_type(self, ability_type: PetType) -> list[Ability]:
         """Retrieve all abilities of a specific type."""
         pass

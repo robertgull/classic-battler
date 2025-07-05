@@ -19,6 +19,13 @@ class PetType(str, Enum):
 
 # "Name", "Damage", "Healing", "Duration", "Cooldown", "Accuracy", "Type", "Popularity"
 class Ability(BaseModel):
+    def __hash__(self):
+        return hash(self.id)
+
+    def __eq__(self, other):
+        return isinstance(other, BattlePet) and self.id == other.id
+
+    id: int = Field(..., description="Unique identifier for the ability")
     name: str = Field(..., description="Name of the ability")
     damage: str = Field(..., description="Damage dealt by the ability")
     healing: str = Field(..., description="Healing provided by the ability")
@@ -30,14 +37,22 @@ class Ability(BaseModel):
 
 class BattlePet(BaseModel):
     """Represents a battle pet with its attributes."""
+    def __hash__(self):
+        return hash(self.id)
+
+    def __eq__(self, other):
+        return isinstance(other, BattlePet) and self.id == other.id
+
     model_config = ConfigDict(extra='forbid', validate_assignment=True)
+
+    id: int = Field(..., description="Unique identifier for the battle pet")
     name: str = Field(..., description="Name of the battle pet")
     level: int = Field(..., description="Level of the battle pet")
     health: int = Field(..., description="Health of the battle pet")
     power: int = Field(..., description="Power of the battle pet")
     speed: int = Field(..., description="Speed of the battle pet")
     breed: str = Field(..., description="Breed of the battle pet")
-    abilities: int = Field(..., description="List of abilities of the battle pet, max 6 abilities")
+    abilities: list[int] = Field(..., description="List of abilities of the battle pet, max 6 abilities")
     source: str = Field(..., description="Source of the battle pet")
     type: PetType = Field(..., description="Type of the battle pet")
     popularity: int = Field(..., description="Popularity rating of the battle pet")
@@ -48,7 +63,7 @@ class BattlePet(BaseModel):
     def ensure_six_abilities(cls, v: list[str]) -> list[str]:
         if len(v) < 6:
             # Pad with empty abilities
-            empty_ability = "Unknown"
+            empty_ability = "-1"  # Assuming -1 is used to represent an empty ability
             v += [empty_ability] * (6 - len(v))
         elif len(v) > 6:
             v = v[:6]
