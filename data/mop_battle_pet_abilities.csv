@@ -1,0 +1,856 @@
+Name,Damage,Healing,Duration,Cooldown,Accuracy,Type,Popularity
+Weakening Blow,20,,,,100%,Humanoid,8
+Black Claw,,,3 turns,,100%,Beast,4
+Call Darkness,45,,5 turns,5 turns,100%,Humanoid,4
+Call Lightning,45,,5 turns,5 turns,100%,Mechanical,3
+Flock,45,,2 turns,,100%,Flying,3
+Wish,,,1 turns,5 turns,100%,Magic,3
+Superbark,35,,,4 turns,100%,Beast,3
+Sunlight,45,,9 turns,5 turns,100%,Elemental,3
+Alpha Strike,25,,,,100%,Flying,3
+Howl,,,2 turns,3 turns,100%,Beast,3
+Cyclone,,,5 turns,5 turns,100%,Flying,2
+Wild Magic,,,5 turns,,100%,Magic,2
+Poison Fang,10,,5 turns,,100%,Beast,2
+Scorched Earth,27,,9 turns,3 turns,100%,Dragonkin,2
+Decoy,,,,8 turns,100%,Mechanical,2
+Lift-Off,30,,1 turns,4 turns,100%,Flying,2
+Arcane Storm,24,,9 turns,3 turns,100%,Magic,2
+Renewing Mists,,,3 turns,,100%,Aquatic,2
+Dodge,,,1 turns,4 turns,100%,Humanoid,2
+Ion Cannon,50,,,5 turns,100%,Mechanical,2
+Whirlpool,,,2 turns,3 turns,100%,Aquatic,2
+Metal Fist,20,,,,100%,Mechanical,2
+Murder the Innocent,30,,,3 turns,100%,Magic,2
+Supercharge,,,1 turns,3 turns,100%,Mechanical,2
+Mana Surge,105,,,3 turns,100%,Magic,2
+Breath,21,,,,100%,Dragonkin,2
+Surge of Power,50,,2 turns,5 turns,100%,Magic,2
+Bubble,,,,8 turns,100%,Humanoid,2
+Apocalypse,,,15 turns,20 turns,100%,Critter,2
+Deflection,,,,3 turns,100%,Humanoid,2
+Shadow Slash,21,,,,100%,Undead,2
+Stampede,45,,2 turns,,100%,Critter,2
+Tongue Lash,30,,,,50%,Critter,2
+Curse of Doom,,,4 turns,5 turns,100%,Undead,2
+Plagued Blood,16,,5 turns,,100%,Undead,2
+Sandstorm,45,,5 turns,5 turns,100%,Flying,2
+Flurry,30,,,,50%,Critter,2
+Nocturnal Strike,40,,,3 turns,50%,Flying,2
+Haunt,,,4 turns,4 turns,100%,Undead,2
+Arcane Blast,15,,,,100%,Magic,2
+Infected Claw,22,,,,100%,Undead,2
+Frog Kiss,10,,1 turns,1 turns,25%,Aquatic,2
+Build Turret,,,4 turns,2 turns,100%,Mechanical,2
+Slicing Wind,30,,,,33%,Flying,2
+Conflagrate,40,,,4 turns,100%,Elemental,2
+Wind-Up,,,,,100%,Mechanical,2
+Railgun,21,,,,100%,Elemental,2
+Moonfire,27,,9 turns,3 turns,100%,Magic,2
+Thunderbolt,36,,,4 turns,100%,Elemental,2
+Rupture,30,,1 turns,4 turns,25%,Elemental,2
+Devour,30,60,,1 turns,100%,Beast,2
+Puncture Wound,40,,,3 turns,100%,Beast,2
+Kick,15,,,3 turns,100%,Humanoid,2
+Shock and Awe,30,,1 turns,4 turns,25%,Mechanical,2
+Acidic Goo,,,3 turns,,100%,Critter,2
+Geyser,,,3 turns,5 turns,100%,Elemental,2
+Tranquility,,,2 turns,,100%,Critter,2
+Crush,22,,,,100%,Humanoid,2
+Flyby,10,,3 turns,,100%,Flying,2
+Dazzling Dance,,,9 turns,,100%,Critter,2
+Unholy Ascension,,,9 turns,,100%,Undead,2
+Shadow Shock,22,,,,100%,Undead,2
+Cleansing Rain,,27,9 turns,3 turns,100%,Aquatic,2
+Tail Sweep,43,,,,100%,Dragonkin,2
+Emerald Dream,,,2 turns,5 turns,100%,Dragonkin,2
+Murder,45,,2 turns,,100%,Flying,2
+Bleat,,45,,4 turns,100%,Critter,2
+Ooze Touch,20,,,,100%,Magic,2
+Blistering Cold,,,4 turns,2 turns,100%,Elemental,2
+Fel Immolate,12,,4 turns,,100%,Elemental,2
+Rip,10,,5 turns,,100%,Beast,2
+Starfall,18,18,9 turns,4 turns,100%,Dragonkin,1
+Prismatic Barrier,,,,5 turns,100%,Magic,1
+Burrow,30,,1 turns,4 turns,100%,Beast,1
+Exposed Wounds,,,5 turns,,100%,Beast,1
+Batter,30,,,,50%,Mechanical,1
+Wild Winds,18,,2 turns,,100%,Flying,1
+Consume Corpse,,50,,3 turns,100%,Undead,1
+Call Blizzard,27,,9 turns,3 turns,100%,Elemental,1
+Thrash,30,,,,50%,Beast,1
+Shell Shield,,,5 turns,,100%,Beast,1
+Headbutt,30,,1 turns,4 turns,25%,Beast,1
+Blast of Hatred,25,,,,100%,Magic,1
+Burn,21,,,,100%,Elemental,1
+Magma Wave,21,,,,100%,Elemental,1
+Stun Seed,,,2 turns,5 turns,100%,Elemental,1
+Broom,20,,,,100%,Humanoid,1
+Deadly Dreaming,,,4 turns,4 turns,100%,Undead,1
+Scratch,20,,,,100%,Critter,1
+Water Jet,20,,,,100%,Aquatic,1
+Dive,30,,1 turns,4 turns,100%,Aquatic,1
+Sleeping Gas,10,,1 turns,1 turns,25%,Dragonkin,1
+Strike,20,,,,100%,Beast,1
+Pump,,,,,100%,Aquatic,1
+Missile,21,,,,100%,Mechanical,1
+Emerald Presence,,,5 turns,,100%,Dragonkin,1
+Cocoon Strike,10,,1 turns,3 turns,100%,Flying,1
+Arcane Explosion,22,,,,100%,Magic,1
+Meteor Strike,30,,1 turns,4 turns,100%,Magic,1
+Phase Shift,,,1 turns,4 turns,100%,Magic,1
+Moon Tears,18,18,9 turns,4 turns,100%,Magic,1
+Deep Freeze,25,,1 turns,4 turns,25%,Elemental,1
+Rampage,75,,,3 turns,100%,Beast,1
+Quake,84,,,2 turns,100%,Mechanical,1
+Absorb,10,100,,,100%,Undead,1
+Survival,,,1 turns,3 turns,100%,Critter,1
+Life Exchange,,,,5 turns,100%,Magic,1
+Stoneskin,,,5 turns,,100%,Magic,1
+Immolate,12,,4 turns,,100%,Elemental,1
+Pounce,25,,,,100%,Beast,1
+Repair,,70,2 turns,5 turns,100%,Mechanical,1
+Peck,20,,,,100%,Flying,1
+Predatory Strike,30,,,4 turns,100%,Flying,1
+Confusing Sting,,,5 turns,,100%,Flying,1
+Powerball,15,,,,100%,Critter,1
+Expunge,32,,,3 turns,100%,Magic,1
+Flash,10,,2 turns,3 turns,100%,Magic,1
+Blingtron Gift Package,30,30,,3 turns,50%,Magic,1
+Photosynthesis,,,5 turns,,100%,Elemental,1
+Bite,20,,,,100%,Beast,1
+Creeping Ooze,14,,3 turns,,100%,Aquatic,1
+Consume,12,100,,1 turns,100%,Undead,1
+Skitter,20,,,,100%,Critter,1
+Drain Power,10,,2 turns,4 turns,100%,Magic,1
+Ethereal,,,,3 turns,100%,Magic,1
+Surge,15,,,,100%,Aquatic,1
+Shadow Talon,21,,,,100%,Magic,1
+Flamethrower,15,,2 turns,,100%,Elemental,1
+Triple Snap,30,,,,33%,Beast,1
+Carpnado,33,,,5 turns,100%,Aquatic,1
+Explode,40,,,,100%,Mechanical,1
+Lock-On,,,1 turns,,100%,Mechanical,1
+Rot,25,,5 turns,3 turns,100%,Undead,1
+BONESTORM,49,,,3 turns,100%,Undead,1
+Corpse Explosion,15,,4 turns,,100%,Undead,1
+Light,40,,,3 turns,100%,Magic,1
+Primal Cry,30,,4 turns,3 turns,100%,Beast,1
+Healing Wave,,30,,3 turns,100%,Aquatic,1
+Gift of the Naaru,,40,,4 turns,100%,Humanoid,1
+Proto-Strike,30,,1 turns,4 turns,100%,Dragonkin,1
+Grave Destruction,36,,,5 turns,100%,Undead,1
+Beaver Dam,,,,5 turns,100%,Critter,1
+Swarm,45,,2 turns,,100%,Critter,1
+Frost Shock,10,,2 turns,,100%,Elemental,1
+Brittle Webbing,10,,3 turns,,100%,Beast,1
+Surge of Light,25,,1 turns,3 turns,25%,Humanoid,1
+Sneak Attack,17,,,,100%,Critter,1
+Evanescence,,,1 turns,4 turns,100%,Magic,1
+Ice Tomb,,,2 turns,5 turns,100%,Elemental,1
+Leech Seed,10,10,1 turns,4 turns,100%,Elemental,1
+Vicious Fang,15,,,,100%,Beast,1
+Trihorn Shield,,,3 turns,5 turns,100%,Beast,1
+Armageddon,60,,,,100%,Mechanical,1
+Whirlwind,27,,,3 turns,100%,Humanoid,1
+Contagion Strike,25,,,,100%,Humanoid,1
+Ice Barrier,,,,5 turns,100%,Elemental,1
+Poison Spit,14,,3 turns,,100%,Beast,1
+Claw,21,,,,100%,Beast,1
+Hunting Party,30,,1 turns,4 turns,100%,Beast,1
+Spirit Claws,28,,,,80%,Beast,1
+Feed,20,100,,4 turns,100%,Beast,1
+Focus,,,5 turns,,100%,Humanoid,1
+Blitz,30,,,,50%,Humanoid,1
+Vicious Slice,20,,,,100%,Humanoid,1
+Cataclysm,45,,,1 turns,50%,Dragonkin,1
+Siphon Life,,,3 turns,,100%,Undead,1
+Cauterize,,70,,3 turns,100%,Elemental,1
+Belly Slide,40,,,,50%,Elemental,1
+Hibernate,,,2 turns,5 turns,100%,Beast,1
+Spiderling Swarm,40,,,3 turns,100%,Beast,1
+Sticky Web,15,,2 turns,,100%,Beast,1
+Maul,50,,,3 turns,100%,Beast,1
+Prowl,,,2 turns,5 turns,100%,Beast,1
+"Huge, Sharp Teeth!",12,,4 turns,,100%,Beast,1
+Blood in the Water,40,,,3 turns,50%,Aquatic,1
+Rain Dance,,20,2 turns,4 turns,100%,Aquatic,1
+Haywire,50,,,3 turns,100%,Mechanical,1
+Jab,21,,,,100%,Humanoid,1
+Deep Breath,50,,,,100%,Dragonkin,1
+Ancient Blessing,,28,9 turns,3 turns,100%,Dragonkin,1
+Quills,30,,,,50%,Flying,1
+Comeback,25,,,,100%,Critter,1
+Immolation,,,9 turns,,100%,Elemental,1
+Jolt,25,,,1 turns,100%,Elemental,1
+Extra Plating,,,3 turns,4 turns,100%,Mechanical,1
+Takedown,36,,,,100%,Humanoid,1
+Anzu's Blessing,,,4 turns,,100%,Flying,1
+Death and Decay,,,9 turns,,100%,Undead,1
+Drain Blood,10,300,,3 turns,100%,Undead,1
+Chomp,22,,,,100%,Critter,1
+Interrupting Gaze,15,,,3 turns,100%,Magic,1
+Lightning Shield,,,2 turns,4 turns,100%,Elemental,1
+Trample,20,,,,100%,Beast,1
+Feign Death,,,,8 turns,100%,Beast,1
+Impale,25,,,2 turns,100%,Beast,1
+Sticky Grenade,,,3 turns,,100%,Mechanical,1
+Stone Form,,135,,6 turns,100%,Undead,1
+Corrosion,10,,2 turns,,100%,Magic,1
+Emerald Bite,21,,,,100%,Magic,1
+Time Bomb,,,3 turns,5 turns,100%,Magic,1
+Sear Magic,,,,2 turns,,Magic,1
+Roar,10,,3 turns,,100%,Beast,1
+Snap,20,,,,100%,Beast,1
+Body Slam,43,,,1 turns,100%,Humanoid,1
+Frenzyheart Brew,10,,3 turns,,100%,Humanoid,1
+Healing Flame,,70,,3 turns,100%,Dragonkin,1
+Glowing Toxin,,,4 turns,,100%,Flying,1
+Moth Dust,25,,1 turns,3 turns,25%,Flying,1
+Creeping Fungus,,,4 turns,,100%,Undead,1
+Burst,40,,,,100%,Critter,1
+Amplify Magic,,,2 turns,3 turns,100%,Magic,1
+Solar Beam,60,,,,100%,Elemental,1
+Ironbark,15,,1 turns,,100%,Elemental,1
+Crystal Prison,,,1 turns,5 turns,100%,Beast,1
+Tail Slap,22,,,,100%,Aquatic,1
+Make it Rain,27,,4 turns,1 turns,80%,Mechanical,1
+Counterstrike,30,,,2 turns,100%,Humanoid,1
+Primal Rage,,,5 turns,,100%,Humanoid,1
+Flame Breath,16,,4 turns,,100%,Dragonkin,1
+Hawk Eye,,,3 turns,,100%,Flying,1
+Preen,,22,2 turns,3 turns,100%,Flying,1
+Dead Man's Party,45,,2 turns,,100%,Undead,1
+Crouch,,,3 turns,4 turns,100%,Critter,1
+Spectral Strike,40,,,3 turns,50%,Magic,1
+Illuminate,45,,9 turns,5 turns,100%,Magic,1
+Eyeblast,20,,4 turns,4 turns,100%,Magic,1
+Forboding Curse,,,4 turns,,100%,Magic,1
+Magic Sword,17,,,,100%,Magic,1
+Spore Shrooms,,,2 turns,2 turns,100%,Elemental,1
+Avalanche,45,,,5 turns,100%,Elemental,1
+Leap,15,,1 turns,,100%,Beast,1
+Ravage,40,40,,1 turns,100%,Beast,1
+Blinding Poison,,,1 turns,4 turns,100%,Beast,1
+Shell Armor,,,2 turns,5 turns,100%,Beast,1
+Bombing Run,10,,3 turns,3 turns,100%,Mechanical,1
+Interrupting Jolt,20,,,4 turns,100%,Mechanical,1
+Reaping Hook,50,,,4 turns,100%,Mechanical,1
+Dreadful Breath,57,,,,100%,Humanoid,1
+Jar of Smelly Liquid,15,,1 turns,2 turns,100%,Humanoid,1
+Nevermore,,,2 turns,10 turns,100%,Flying,1
+Savage Talon,22,,,,100%,Flying,1
+Rabid Strike,13,,3 turns,,100%,Undead,1
+Swarm of Flies,,,5 turns,,100%,Critter,1
+Uncanny Luck,,,4 turns,,200%,Critter,1
+Mudslide,36,,9 turns,4 turns,100%,Critter,1
+Psychic Blast,30,,,1 turns,100%,Magic,1
+Frost Nova,20,,2 turns,3 turns,100%,Elemental,1
+Snowball,20,,,,100%,Elemental,1
+Rake,15,,,2 turns,100%,Beast,1
+Dust Cloud,,,1 turns,4 turns,100%,Beast,1
+Tidal Wave,21,,,,100%,Aquatic,1
+Deep Bite,10,,,,100%,Aquatic,1
+Demolish,40,,,,50%,Mechanical,1
+Smoke Cloud,,,1 turns,4 turns,100%,Mechanical,1
+Itchin' for a Stitchin',,,,,,Humanoid,1
+Eye Beam,75,,,3 turns,100%,Humanoid,1
+Soothe,,,1 turns,4 turns,100%,Critter,1
+Perk Up,,28,9 turns,3 turns,100%,Critter,1
+Onyx Bite,22,,,,100%,Magic,1
+Nether Blast,15,,,,100%,Magic,1
+Sons of the Flame,,,2 turns,8 turns,100%,Elemental,1
+Ice Lance,25,,,,100%,Elemental,1
+Darkflame,25,,2 turns,3 turns,100%,Elemental,1
+Gnaw,25,,,,100%,Beast,1
+Pheromones,,,3 turns,5 turns,100%,Beast,1
+Barbed Stinger,19,,1 turns,,20%,Beast,1
+Paralyzing Venom,15,,,3 turns,100%,Beast,1
+Zap,20,,,,100%,Mechanical,1
+Toxic Smoke,16,,2 turns,,100%,Mechanical,1
+Coin Toss,22,,,,100%,Mechanical,1
+Blackout Kick,,,1 turns,5 turns,100%,Humanoid,1
+Punish,21,,,,100%,Humanoid,1
+Spiked Skin,,,5 turns,,100%,Dragonkin,1
+Moth Balls,40,,3 turns,1 turns,50%,Flying,1
+Leech Life,10,20,,1 turns,100%,Undead,1
+Agony,,,2 turns,,100%,Undead,1
+Death Grip,10,,,4 turns,100%,Undead,1
+Nut Barrage,27,,4 turns,1 turns,80%,Critter,1
+Buried Treasure,,,,3 turns,100%,Critter,1
+Locust Swarm,45,,1 turns,2 turns,100%,Critter,1
+Cute As A Button,,,2 turns,3 turns,100%,Critter,1
+Soulrush,30,,1 turns,4 turns,25%,Magic,1
+Spirit Spikes,,,1 turns,4 turns,100%,Magic,1
+Righteous Inspiration,,,1 turns,8 turns,100%,Magic,1
+Consume Magic,,20,,4 turns,100%,Magic,1
+Enrage,,,1 turns,,100%,Beast,1
+Siphon Anima,18,100,,3 turns,100%,Mechanical,1
+Instability,45,,,1 turns,50%,Dragonkin,1
+Frost Breath,20,,,,100%,Dragonkin,1
+Vicious Streak,10,,2 turns,,100%,Critter,1
+Adrenal Glands,,,5 turns,,100%,Magic,1
+Focused Beams,15,,,,100%,Magic,1
+Portal,,,,8 turns,100%,Magic,1
+Void Portal,20,,,4 turns,100%,Magic,1
+Sting,,,6 turns,,100%,Beast,1
+Call the Pack,21,,1 turns,3 turns,100%,Beast,1
+Squeeze,30,,2 turns,4 turns,100%,Aquatic,1
+Chop,10,,5 turns,,100%,Mechanical,1
+Greench's Gift,40,,,5 turns,100%,Mechanical,1
+Backflip,15,,,3 turns,100%,Humanoid,1
+Restoration,,,,3 turns,100%,Humanoid,1
+Elementium Bolt,,,2 turns,5 turns,100%,Dragonkin,1
+Feathered Frenzy,25,,1 turns,3 turns,100%,Flying,1
+Whirling Talons,,,4 turns,5 turns,100%,Flying,1
+Lullaby,,,2 turns,5 turns,100%,Critter,1
+Darkmoon Curse,10,,2 turns,4 turns,100%,Magic,1
+Moon Dance,,,9 turns,,100%,Magic,1
+Worst Fear,40,,,3 turns,50%,Magic,1
+Unleash Life,20,100,,4 turns,100%,Elemental,1
+Screech,10,,4 turns,,100%,Beast,1
+Devour X,50,200,,3 turns,100%,Beast,1
+Inflation,45,,2 turns,,100%,Mechanical,1
+Haymaker,50,,1 turns,3 turns,50%,Humanoid,1
+Toxic Fumes,27,,9 turns,3 turns,100%,Dragonkin,1
+Fight and Flight,12,,3 turns,5 turns,100%,Flying,1
+Howling Blast,40,,,3 turns,100%,Elemental,1
+Frost Spit,20,,,,100%,Elemental,1
+Nature's Ward,,,5 turns,,100%,Elemental,1
+Magma Trap,,,9 turns,5 turns,100%,Elemental,1
+Bash,,,1 turns,5 turns,100%,Beast,1
+Woodchipper,12,,4 turns,,100%,Beast,1
+Swallow You Whole,20,,,,100%,Aquatic,1
+Gnash,18,,2 turns,,100%,Aquatic,1
+Launch Rocket,,,,,100%,Mechanical,1
+Overtune,10,,2 turns,,100%,Mechanical,1
+Holy Justice,,,1 turns,5 turns,100%,Humanoid,1
+Shadowflame,22,,,,100%,Dragonkin,1
+Accuracy,,,5 turns,,100%,Flying,1
+Shadowmeld,,,2 turns,5 turns,100%,Flying,1
+Bone Bite,20,,,,100%,Undead,1
+Ghostly Bite,40,,1 turns,3 turns,100%,Undead,1
+BONESTORM!!,89,,,3 turns,100%,Undead,1
+Lucky Dance,,,4 turns,,100%,Critter,1
+Sweep,20,,,5 turns,100%,Magic,1
+Feedback,20,,,,100%,Magic,1
+Banana Barrage,30,,2 turns,1 turns,50%,Beast,1
+Slither,25,,2 turns,3 turns,100%,Beast,1
+Horn Gore,21,,,,100%,Beast,1
+Blazing Yip,15,,1 turns,,100%,Beast,1
+Lumbering Charge,50,,1 turns,4 turns,100%,Beast,1
+Tail Smash,10,,,4 turns,100%,Beast,1
+Acid Touch,12,,4 turns,,100%,Aquatic,1
+Toxic Skin,,,5 turns,,200%,Aquatic,1
+Heartbroken,,,1 turns,2 turns,100%,Mechanical,1
+Flux,33,,,3 turns,100%,Mechanical,1
+Touch of the Animus,20,,2 turns,4 turns,100%,Mechanical,1
+Punch,20,,,,100%,Humanoid,1
+Bandage,,70,,3 turns,100%,Humanoid,1
+Barrier Projector,,,2 turns,4 turns,100%,Humanoid,1
+Reckless Strike,25,,1 turns,1 turns,100%,Flying,1
+Squawk,10,,3 turns,,100%,Flying,1
+Haunting Song,,48,,4 turns,100%,Undead,1
+Egg Barrage,34,,3 turns,1 turns,50%,Critter,1
+Feral Clawstorm,10,,5 turns,,100%,Critter,1
+Nether Gate,20,,,5 turns,100%,Magic,1
+Spiritfire Bolt,22,,,,100%,Magic,1
+Fade,,,,8 turns,100%,Magic,1
+Blessed Hammer,21,,,,100%,Magic,1
+Phase Punch,10,,,4 turns,100%,Magic,1
+Glop,40,,1 turns,5 turns,100%,Magic,1
+Inspiring Song,,36,,3 turns,100%,Elemental,1
+Stone Rush,50,,,1 turns,100%,Elemental,1
+Poisoned Branch,12,,4 turns,,100%,Elemental,1
+Azerite Spike,40,,,4 turns,100%,Elemental,1
+Feral Strike,37,,,,100%,Beast,1
+Retrieve,10,,,4 turns,100%,Beast,1
+Nap Time,,,2 turns,5 turns,100%,Beast,1
+Aura of Gonk,,,4 turns,8 turns,100%,Beast,1
+Acid Rain,27,,9 turns,3 turns,100%,Aquatic,1
+Shell Rush,36,,,5 turns,100%,Aquatic,1
+Spa Day,,,2 turns,5 turns,100%,Aquatic,1
+SMCKTHAT.EXE,25,,,,100%,Mechanical,1
+Rapid Fire,21,,,,100%,Humanoid,1
+High Fiber,,,,4 turns,,Humanoid,1
+Macabre Maraca,20,,,,100%,Humanoid,1
+Falling Murloc,40,,1 turns,4 turns,100%,Humanoid,1
+Unrelenting Flames,30,,3 turns,4 turns,25%,Dragonkin,1
+Diseased Bite,21,,,,100%,Undead,1
+Bone Prison,17,,2 turns,,100%,Undead,1
+Creepy Chomp,20,,,,100%,Undead,1
+Gargoyle Strike,20,,,,100%,Undead,1
+Adrenaline Rush,10,,3 turns,,100%,Critter,1
+Stench,,,4 turns,,100%,Critter,1
+Chew,,,1 turns,1 turns,100%,Critter,1
+Quick Attack,15,,,,100%,Critter,1
+Trenchant Claws,15,,,,100%,Critter,1
+Gift of Winter Veil,40,,,5 turns,100%,Magic,1
+Stimpack,,,5 turns,,100%,Magic,1
+Moon Fang,22,,,,100%,Magic,1
+Greed Before Need,13,,3 turns,,100%,Magic,1
+Wing Buffet,20,,,5 turns,100%,Magic,1
+Lash,30,,,,50%,Elemental,1
+Frostbite Webbing,10,,3 turns,,100%,Elemental,1
+Hiss,20,,4 turns,3 turns,100%,Beast,1
+Skunky Brew,20,,5 turns,3 turns,100%,Beast,1
+Puppy Parade,45,,2 turns,,100%,Beast,1
+Swipe,22,,,,100%,Beast,1
+Ursoc's Claws,22,,,,100%,Beast,1
+Firebomb,20,,9 turns,,100%,Mechanical,1
+Staggered Steps,,,2 turns,3 turns,100%,Humanoid,1
+"Fury of 1,000 Fists",30,,1 turns,4 turns,100%,Humanoid,1
+Perfumed Arrow,20,,1 turns,2 turns,25%,Humanoid,1
+Frolick,,,2 turns,4 turns,100%,Humanoid,1
+Shieldstorm,,,8 turns,6 turns,100%,Humanoid,1
+Cleave,20,,,,100%,Undead,1
+Empowering Strikes,15,,,,100%,Undead,1
+Nature's Touch,,30,,3 turns,100%,Critter,1
+Uncertainty,,,1 turns,3 turns,100%,Magic,1
+Celestial Blessing,,,5 turns,,100%,Magic,1
+Dark Talon,18,,,,200%,Magic,1
+Plushie Rush,,,,,100%,Magic,1
+Table of Discontents,,,9 turns,6 turns,100%,Magic,1
+[DNT] INSTADEAD,,,,,,Magic,1
+Quicksand,30,,2 turns,4 turns,100%,Elemental,1
+Seethe,22,,,,100%,Elemental,1
+Explosive Brew,,,3 turns,,100%,Elemental,1
+Deep Burn,13,,,,100%,Elemental,1
+Fire Shield,,,3 turns,5 turns,100%,Elemental,1
+Twilight Fire,15,,2 turns,1 turns,100%,Elemental,1
+Trihorn Charge,20,,,1 turns,85%,Beast,1
+Call the Pack,21,,1 turns,3 turns,100%,Beast,1
+Frying Pan,20,,1 turns,1 turns,25%,Mechanical,1
+Lovestruck,,,1 turns,5 turns,100%,Humanoid,1
+Shot Through The Heart,50,,,3 turns,100%,Humanoid,1
+Blinding Powder,,,1 turns,3 turns,100%,Humanoid,1
+Ravenholdt Rush,16,,,,100%,Humanoid,1
+Death Bleat,150,,,8 turns,100%,Undead,1
+Hoof,21,,,,100%,Critter,1
+Refuge,,,6 turns,6 turns,100%,Critter,1
+Counterspell,10,,,2 turns,100%,Magic,1
+Jade Claw,21,,,,100%,Magic,1
+Illusionary Barrier,,,,5 turns,100%,Magic,1
+Laser,18,,,,200%,Magic,1
+Arcane Annihilator,20,,1 turns,,100%,Magic,1
+Return to Sender,20,,,5 turns,100%,Magic,1
+Dark Bolt,30,,,1 turns,70%,Magic,1
+Soothing Mists,,,5 turns,,100%,Elemental,1
+Dark Rebirth,,,,5 turns,100%,Elemental,1
+Puppies of the Flame,,,2 turns,8 turns,100%,Elemental,1
+Smash,22,,,,100%,Beast,1
+Rush,15,,1 turns,,100%,Beast,1
+Fish Slap,20,,,,100%,Aquatic,1
+Spiked Shell,,,2 turns,3 turns,100%,Aquatic,1
+Needle Claw,14,,3 turns,,100%,Aquatic,1
+Tympanic Tantrum,84,,,4 turns,100%,Mechanical,1
+Rebuild,,48,,3 turns,100%,Mechanical,1
+Minefield,,,9 turns,5 turns,100%,Mechanical,1
+Aged Yolk,,,,2 turns,,Humanoid,0
+Tornado Punch,30,,1 turns,4 turns,25%,Humanoid,0
+Reflective Shield,,,2 turns,3 turns,100%,Humanoid,0
+Who's The Best Elekk In The Whole World?,,,,,100%,Humanoid,0
+Ott Breath,20,,,,100%,Dragonkin,0
+Falcosaur Swarm!,30,,2 turns,,100%,Flying,0
+Sludge Belch,15,,2 turns,1 turns,100%,Undead,0
+Gobble Strike,10,,4 turns,,100%,Critter,0
+Food Coma,,,2 turns,5 turns,100%,Critter,0
+Snail Mail,50,,,4 turns,100%,Critter,0
+Jadeskin,,,5 turns,,100%,Magic,0
+Magic Hat,20,,,,100%,Magic,0
+Spectral Spine,25,,1 turns,3 turns,50%,Magic,0
+When Elekks Fly,40,,,,50%,Magic,0
+Tentacle Stab,,,3 turns,,100%,Magic,0
+Void Slap,27,,,3 turns,100%,Magic,0
+Entangling Roots,,,1 turns,3 turns,100%,Elemental,0
+Early Advantage,40,,,3 turns,100%,Elemental,0
+Spark,30,,,,50%,Elemental,0
+Paralyzing Shock,30,,3 turns,5 turns,100%,Elemental,0
+Flash Freeze,30,,5 turns,3 turns,100%,Elemental,0
+Swamp Mud,24,,9 turns,1 turns,100%,Elemental,0
+Alluring Spores,13,,2 turns,,100%,Elemental,0
+Mangle,,,10 turns,,100%,Beast,0
+Rend,30,,,,50%,Beast,0
+Wild Stallions,25,,,3 turns,100%,Beast,0
+Sloth Strike,50,,3 turns,,100%,Beast,0
+Feast,40,,,3 turns,50%,Beast,0
+Tentacle Slap,21,,,,100%,Aquatic,0
+Pinch,15,,,,100%,Aquatic,0
+Megalodon,60,,,4 turns,100%,Aquatic,0
+Healing Wrap,,25,,2 turns,100%,Aquatic,0
+Ambystan Snap,25,,1 turns,4 turns,100%,Aquatic,0
+XE-321 Boombot,,,3 turns,3 turns,100%,Mechanical,0
+Snap Trap,,,9 turns,5 turns,100%,Mechanical,0
+Fel Exhaust,12,,4 turns,,100%,Mechanical,0
+Omnislash,21,,,,100%,Humanoid,0
+Love Potion,,,,3 turns,100%,Humanoid,0
+Dark Fate,,,,3 turns,100%,Humanoid,0
+Bend Time,,,2 turns,6 turns,,Dragonkin,0
+Warning Squawk,,,3 turns,5 turns,100%,Flying,0
+BONESTORM!,69,,,3 turns,100%,Undead,0
+Mummy Wrap,10,,1 turns,3 turns,100%,Undead,0
+Slow and Steady,50,,,4 turns,100%,Critter,0
+Lens Flare,10,,2 turns,3 turns,100%,Magic,0
+Slow Unmaking,,,4 turns,,100%,Magic,0
+Sticky Goo,10,,5 turns,,100%,Elemental,0
+Rock Barrage,32,,3 turns,2 turns,50%,Elemental,0
+Flame Jet,30,,3 turns,4 turns,50%,Elemental,0
+Breath of Sorrow,25,,2 turns,3 turns,100%,Elemental,0
+Fel Corruption,60,,10 turns,3 turns,100%,Elemental,0
+Incineration Security Measures,35,,,,100%,Elemental,0
+Inferno Herding,10,,,2 turns,100%,Elemental,0
+Chaos Nova,33,,,3 turns,100%,Elemental,0
+Akunda's Wrath,99,,3 turns,5 turns,100%,Elemental,0
+Corrupted Ground,,,9 turns,,100%,Elemental,0
+Barrel Toss,,,,,100%,Beast,0
+Huge Fang,20,,,1 turns,100%,Beast,0
+Udder Destruction,30,,1 turns,4 turns,25%,Beast,0
+Mother's Milk,,48,,4 turns,100%,Beast,0
+Bubble Blast,20,,,1 turns,100%,Aquatic,0
+U-238 Rounds,30,,,,50%,Mechanical,0
+Lightning Conductor,20,,1 turns,,100%,Mechanical,0
+Razor Talons,,,3 turns,,100%,Mechanical,0
+MAYHEM,84,,,2 turns,50%,Mechanical,0
+Arm Cannon Blast,15,,,,100%,Mechanical,0
+Charge,15,,,,100%,Humanoid,0
+Eggnog,,,,2 turns,,Humanoid,0
+Amber Prison,,,1 turns,5 turns,100%,Humanoid,0
+Queue Dodge,,,1 turns,4 turns,100%,Humanoid,0
+Plague Breath,22,,,,100%,Dragonkin,0
+Tea Party,21,,,,100%,Undead,0
+Roar of the Dead,,,2 turns,3 turns,100%,Undead,0
+Blinkstrike,15,,,,100%,Magic,0
+Centrifugal Hooks,10,,2 turns,,100%,Magic,0
+Arcane Slash,43,,,,100%,Magic,0
+Psionic Shockwave,22,,,,100%,Magic,0
+Arcane Dash,40,,1 turns,5 turns,25%,Magic,0
+Nightmare,25,,2 turns,3 turns,100%,Magic,0
+Void Cyclone,,,5 turns,5 turns,100%,Magic,0
+Void Nova,33,,,3 turns,100%,Magic,0
+[DNT] TRAP HELP,,,1 turns,,100%,Magic,0
+Crystal Overload,,,2 turns,1 turns,100%,Elemental,0
+Poison Lash,10,,5 turns,,100%,Elemental,0
+Slippery Ice,10,,4 turns,,100%,Elemental,0
+Sulfuras Smash,22,,,,100%,Elemental,0
+Autumn Breeze,,36,2 turns,4 turns,100%,Elemental,0
+Fist of the Forest,40,,,5 turns,100%,Elemental,0
+Frenzy,15,,3 turns,1 turns,100%,Elemental,0
+Cute Face,,,4 turns,,100%,Beast,0
+Niuzao's Charge,50,,,4 turns,100%,Beast,0
+Where's the Beef?,,,1 turns,4 turns,100%,Beast,0
+Face Bite,15,,1 turns,,100%,Beast,0
+Glade Prowl,,,2 turns,2 turns,100%,Beast,0
+Faceroll,,,1 turns,5 turns,100%,Beast,0
+Steam Vent,22,,,,100%,Aquatic,0
+Healing Crash,,,,3 turns,100%,Aquatic,0
+Antaen Cannon,100,,,5 turns,100%,Mechanical,0
+Call Lightning X,35,,5 turns,5 turns,100%,Mechanical,0
+Soul Ward,,,,3 turns,100%,Humanoid,0
+Gilded Fist,21,,,,100%,Humanoid,0
+Mighty Charge,32,,,4 turns,100%,Humanoid,0
+Murkmorphosis,,,5 turns,5 turns,100%,Humanoid,0
+Holy Strike,21,,,,100%,Humanoid,0
+For Adventure!,,36,,3 turns,100%,Humanoid,0
+For The Horde!,20,,3 turns,1 turns,100%,Humanoid,0
+Hate Mail,15,,3 turns,1 turns,100%,Humanoid,0
+Wind Buffet,10,,,4 turns,100%,Flying,0
+Bone Barrage,27,,4 turns,1 turns,80%,Undead,0
+Necrotic Bomb,10,,3 turns,3 turns,100%,Undead,0
+Return to Rest,,,,7 turns,100%,Undead,0
+Flank,30,,,,50%,Critter,0
+Cute As A Button,,,,,100%,Critter,0
+Sniff Out,25,,,3 turns,100%,Critter,0
+Slime Trail,18,,1 turns,,100%,Critter,0
+Deliberate Retreat,,50,,6 turns,100%,Critter,0
+Invisibility,,,2 turns,4 turns,100%,Magic,0
+Competitive Spirit,10,,3 turns,,100%,Magic,0
+Jadefire Lightning,27,,,2 turns,100%,Magic,0
+Nimbus,,,9 turns,,100%,Magic,0
+Psionic Storm,40,,9 turns,5 turns,100%,Magic,0
+Arcane Barrage,30,,,,50%,Magic,0
+Hubris,25,,1 turns,1 turns,100%,Magic,0
+Goldskin,15,,1 turns,,100%,Elemental,0
+Inebriate,,,4 turns,,100%,Elemental,0
+Barkskin,,,5 turns,,100%,Elemental,0
+Flame Shot,,,,,100%,Elemental,0
+Obsidian Bite,22,,,,100%,Elemental,0
+Corrupted Touch,14,,3 turns,,100%,Elemental,0
+Ashes of Outland,25,,1 turns,5 turns,100%,Elemental,0
+Sunshell,15,,9 turns,3 turns,100%,Elemental,0
+Trumpet Strike,10,,3 turns,,100%,Beast,0
+Digest Brains,,30,,3 turns,100%,Beast,0
+The Good Stuff,,48,,4 turns,100%,Beast,0
+Lick,15,,4 turns,,100%,Beast,0
+Wombo Combo,15,,1 turns,,100%,Beast,0
+Croak,20,,4 turns,4 turns,100%,Aquatic,0
+Brew Bolt,22,,,,100%,Aquatic,0
+Hot Soup,15,,,,100%,Aquatic,0
+Frost Shot,,,,,100%,Aquatic,0
+Shell Fortress,,,1 turns,6 turns,100%,Aquatic,0
+Reboot,,70,2 turns,5 turns,100%,Mechanical,0
+Full Team Repair,,,,2 turns,100%,Mechanical,0
+Alert!!,25,,,,100%,Mechanical,0
+Clobber,,,1 turns,5 turns,100%,Humanoid,0
+Shield Block,,,,3 turns,100%,Humanoid,0
+Gauss Rifle,22,,,,100%,Humanoid,0
+Logic,25,,,1 turns,100%,Humanoid,0
+Giant's Blood,,22,3 turns,3 turns,100%,Humanoid,0
+Club,20,,,,100%,Humanoid,0
+Nap Time,,,1 turns,,100%,Humanoid,0
+Ban Hammer,21,,,,100%,Humanoid,0
+Blitz,30,,,,50%,Humanoid,0
+Face Punch,10,,,1 turns,100%,Humanoid,0
+Face Punch X,10,,,,100%,Humanoid,0
+Dragon's Call,25,,,3 turns,100%,Dragonkin,0
+Caw,,,3 turns,,100%,Flying,0
+Great Cleave,23,,,2 turns,100%,Undead,0
+Gale Slash,18,,2 turns,,100%,Undead,0
+Hateful Strike,120,,,2 turns,100%,Undead,0
+Clean-Up,25,,,3 turns,100%,Magic,0
+Weakness,10,,1 turns,1 turns,100%,Magic,0
+Evolution,30,,3 turns,5 turns,100%,Magic,0
+Arcane Shot,,,,,100%,Magic,0
+Void Gate,20,,,2 turns,100%,Magic,0
+Illusionary Barrier X,,,,3 turns,100%,Magic,0
+Stay a While and Listen,,,2 turns,5 turns,100%,Magic,0
+Mana Flare,,,1 turns,3 turns,100%,Magic,0
+[DNT] TEST,,,,,,Magic,0
+Shadow Bolt Volley,45,,,3 turns,100%,Magic,0
+Sons of the Root,,,2 turns,8 turns,100%,Elemental,0
+Call of Winter,30,,9 turns,3 turns,100%,Elemental,0
+Fire Quills,30,,,,50%,Elemental,0
+Inferno Herding,10,,,4 turns,100%,Elemental,0
+Unstable Shield,,,2 turns,4 turns,100%,Elemental,0
+Discharge,40,,2 turns,5 turns,100%,Elemental,0
+Evasive Stalk,20,,,,100%,Elemental,0
+Weald Wall,,,,5 turns,100%,Elemental,0
+Windfury,18,,,,100%,Elemental,0
+Toxic Bite,10,,5 turns,,100%,Beast,0
+Tail Smash X,20,,,3 turns,100%,Beast,0
+Healing Stream,,48,,3 turns,100%,Aquatic,0
+Otter Breath,10,,,,100%,Aquatic,0
+Launch,30,,1 turns,4 turns,100%,Mechanical,0
+Tesla Cannon,22,,,,100%,Mechanical,0
+Extra Plating,,,3 turns,4 turns,100%,Mechanical,0
+Cannon Shot,,,,,100%,Mechanical,0
+Warp,,,,8 turns,100%,Mechanical,0
+Chaos Beam,18,,,,200%,Mechanical,0
+Sonic Detonator,30,,,3 turns,100%,Mechanical,0
+Jackhammer,48,,,,100%,Mechanical,0
+Holy Sword,21,,,,100%,Humanoid,0
+Smoke Bomb,,,,5 turns,100%,Humanoid,0
+Overpowered,,,1 turns,3 turns,100%,Humanoid,0
+Junk Mail,45,,2 turns,,100%,Humanoid,0
+Shriek,10,,3 turns,,100%,Dragonkin,0
+Roll,10,,3 turns,,100%,Dragonkin,0
+Life Sap,10,100,,,100%,Dragonkin,0
+Sting,35,,,10 turns,100%,Flying,0
+Cluck,20,,4 turns,2 turns,100%,Flying,0
+Blood Harvest,30,300,,2 turns,100%,Flying,0
+Raise Ally,,,4 turns,2 turns,100%,Undead,0
+Raise Dead,,,,8 turns,,Undead,0
+Greater Apocalypse,,,20 turns,20 turns,200%,Critter,0
+Family Reunion,45,,2 turns,,100%,Critter,0
+Scrabble,43,,,,100%,Critter,0
+Beam,20,,,,100%,Magic,0
+Inner Vision,,,1 turns,1 turns,100%,Magic,0
+Gravity,,,2 turns,1 turns,100%,Magic,0
+Baneling Burst,40,,,,100%,Magic,0
+Torment,60,200,,5 turns,100%,Magic,0
+Deep Research,,,,5 turns,100%,Magic,0
+Mind Games,,,3 turns,4 turns,100%,Magic,0
+Stone Shot,20,,,,100%,Elemental,0
+Sand Bolt,18,,1 turns,,100%,Elemental,0
+Thunderclap,36,,,4 turns,100%,Elemental,0
+Wild Throw,20,,,,100%,Elemental,0
+The Final Pop,20,,,,100%,Elemental,0
+Holy Blast,10,,,,100%,Elemental,0
+Bloodfang,25,25,,3 turns,100%,Beast,0
+Pig Out,14,100,,1 turns,100%,Beast,0
+Mud Rake,27,,9 turns,3 turns,100%,Beast,0
+Rend Flesh,40,,,4 turns,100%,Beast,0
+Spiny Carapace,,,5 turns,2 turns,100%,Aquatic,0
+Toxic Spray,10,,5 turns,,100%,Aquatic,0
+Tidal Wave X,42,,,2 turns,100%,Aquatic,0
+Pinch X,15,,,,100%,Aquatic,0
+Blood in the Water X,70,,,3 turns,25%,Aquatic,0
+First Croak,6,,2 turns,3 turns,100%,Aquatic,0
+Quaking Drill,96,,,3 turns,100%,Mechanical,0
+The Big One,180,,,2 turns,100%,Mechanical,0
+Sonic Blast,20,,,,100%,Mechanical,0
+Unstable Engineering,,,4 turns,,100%,Mechanical,0
+Rapid Turret,,,4 turns,,100%,Mechanical,0
+Spin Kick,20,,,4 turns,100%,Humanoid,0
+Bubble X,,,,5 turns,100%,Humanoid,0
+Mass Resurrection,,,,8 turns,,Humanoid,0
+Jade Breath,20,,,,100%,Dragonkin,0
+Twilight Meteorite,45,,,5 turns,100%,Dragonkin,0
+Sludge Claw,20,,,3 turns,100%,Dragonkin,0
+Lift-Off X,30,,1 turns,3 turns,100%,Flying,0
+Death Coil,14,50,,,100%,Undead,0
+Skull Toss,22,,,,100%,Undead,0
+Dumpster Dive,30,,1 turns,4 turns,100%,Critter,0
+Swarm of Bees,,,5 turns,,100%,Critter,0
+Gorm Chitin,,,5 turns,3 turns,100%,Critter,0
+Nut-trition,,,1 turns,5 turns,,Critter,0
+Zergling Rush,45,,2 turns,,100%,Magic,0
+Jade Barrier,,,,5 turns,100%,Magic,0
+Ironskin,,,2 turns,4 turns,100%,Magic,0
+Creeping Insanity,,,3 turns,5 turns,100%,Magic,0
+Temporal Anomaly,,,9 turns,3 turns,200%,Magic,0
+Sewage Eruption,,,2 turns,3 turns,100%,Magic,0
+Slime Time,110,,,3 turns,100%,Magic,0
+Plant,,,,,,Elemental,0
+Thorns,,,5 turns,,100%,Elemental,0
+Super Sticky Goo,15,,2 turns,,100%,Elemental,0
+Flamethrower,15,,2 turns,,100%,Elemental,0
+Shiverweb Swarm,40,,,3 turns,100%,Elemental,0
+Venomsleet Spit,14,,3 turns,,100%,Elemental,0
+Horn Attack,20,,,1 turns,50%,Beast,0
+Vengeance,,,,2 turns,100%,Beast,0
+Bark,15,,1 turns,,100%,Beast,0
+Terrifying Toxicity,15,,5 turns,5 turns,100%,Beast,0
+Deep Snap,10,,,1 turns,100%,Aquatic,0
+Screeching Gears,20,,1 turns,1 turns,25%,Mechanical,0
+Hammer,30,,,,100%,Mechanical,0
+Flame Cannon,80,,,3 turns,100%,Mechanical,0
+Shredder Blade,21,,,,100%,Mechanical,0
+Siphon Gear,17,,3 turns,,100%,Mechanical,0
+Money Meteor,45,,,5 turns,100%,Mechanical,0
+Overcharge,10,,2 turns,,100%,Mechanical,0
+Stoke the Flames,,30,7 turns,3 turns,100%,Mechanical,0
+Focus Chi,,,1 turns,1 turns,100%,Humanoid,0
+Holy Charge,50,,,3 turns,100%,Humanoid,0
+Package Drop,18,,,,200%,Humanoid,0
+Ancient Knowledge,,35,5 turns,5 turns,100%,Dragonkin,0
+Stunning Peck,,,5 turns,15 turns,100%,Flying,0
+Wind Burst,21,,,,100%,Flying,0
+Frill Blast,40,,,5 turns,100%,Magic,0
+Disruption,,,,4 turns,,Magic,0
+Rewind Time,,70,,3 turns,100%,Magic,0
+Buuurp!,30,,2 turns,4 turns,100%,Elemental,0
+Cosmic Smash,27,,,2 turns,100%,Elemental,0
+Azerite Bolt,25,,,1 turns,100%,Elemental,0
+Sonic Blast,25,,,,100%,Elemental,0
+Ottest Breath,16,,4 turns,3 turns,100%,Elemental,0
+Ice Age,40,,1 turns,5 turns,25%,Elemental,0
+Poison Protocol,15,,2 turns,5 turns,100%,Beast,0
+Howl,,,2 turns,3 turns,100%,Beast,0
+Zoomies,25,,2 turns,3 turns,85%,Beast,0
+Coolant Flush,35,,2 turns,2 turns,100%,Aquatic,0
+Krag'wa's Wrath,25,,,4 turns,100%,Aquatic,0
+Clamp,25,,3 turns,4 turns,100%,Mechanical,0
+Drill Charge,25,,,2 turns,100%,Mechanical,0
+Chain Lightning,33,,,3 turns,100%,Mechanical,0
+Mega Discharge,60,,1 turns,5 turns,100%,Mechanical,0
+Double Zap,24,,1 turns,,100%,Mechanical,0
+Bow Shot,20,,,,100%,Humanoid,0
+For The Alliance!,20,,3 turns,1 turns,100%,Humanoid,0
+Exposing Claw,20,,,,100%,Dragonkin,0
+Furious Surge,15,,,,100%,Dragonkin,0
+Flock X,30,,2 turns,,100%,Flying,0
+Slime,25,,,1 turns,100%,Undead,0
+Reanimate,,75,,8 turns,100%,Undead,0
+Nibble,10,,,2 turns,100%,Critter,0
+Metabolic Boost,15,,1 turns,,100%,Magic,0
+Phaser,21,,,,100%,Magic,0
+Spiritfire Beam,33,,,3 turns,100%,Magic,0
+Rawr!,,,,,100%,Magic,0
+Tremble in Fear,39,,6 turns,3 turns,100%,Magic,0
+Corrosion X,100,,2 turns,8 turns,100%,Magic,0
+Void Crash,,,2 turns,5 turns,100%,Magic,0
+Hatred Manifest,,,4 turns,5 turns,100%,Magic,0
+Arcane Riposte,25,,,,100%,Magic,0
+Ice Spike,40,,,,50%,Elemental,0
+I Am Broot!,,22,3 turns,3 turns,100%,Elemental,0
+Icy Web,15,,2 turns,,100%,Elemental,0
+Storm Breath,25,,,,100%,Elemental,0
+Plot Twist,21,,,,100%,Beast,0
+Dominance,,,2 turns,2 turns,100%,Beast,0
+Freezing Spray,20,,,,100%,Aquatic,0
+Elemental Gatling Gun,36,,,2 turns,75%,Aquatic,0
+Steady Snap,30,,,,50%,Aquatic,0
+Thundertongue,30,,,2 turns,100%,Aquatic,0
+Booby-Trapped Presents,,,9 turns,5 turns,100%,Mechanical,0
+Alert!,21,,,,100%,Mechanical,0
+Omni Pummel,24,,,3 turns,100%,Mechanical,0
+Anvil Drop,32,,1 turns,2 turns,100%,Mechanical,0
+Hammering Drill,48,,,,100%,Mechanical,0
+Express Delivery,15,,,,100%,Humanoid,0
+Counterstrike X,60,,,2 turns,100%,Humanoid,0
+Dazzle,25,,2 turns,4 turns,100%,Humanoid,0
+Cataclysms Edge,21,,,,100%,Humanoid,0
+Devastate,30,,1 turns,4 turns,100%,Dragonkin,0
+Soul Steal,14,50,,,100%,Undead,0
+Nairn!,15,,,,100%,Critter,0
+Rays of Light,26,15,,4 turns,100%,Magic,0
+Light of Creation,,,2 turns,5 turns,100%,Magic,0
+Sticky Surge,,,9 turns,5 turns,200%,Magic,0
+Winter Spirit,20,,,,100%,Elemental,0
+Pound,40,,,,100%,Elemental,0
+Going Bonkers!,,,2 turns,3 turns,100%,Beast,0
+Great Sting,,,2 turns,4 turns,100%,Beast,0
+Devour the Weak,45,,,3 turns,100%,Beast,0
+Grasp,15,,2 turns,,100%,Aquatic,0
+Whirlpool X,,,2 turns,3 turns,100%,Aquatic,0
+Warning!,,,,8 turns,100%,Mechanical,0
+Vault Drop,30,,1 turns,4 turns,100%,Mechanical,0
+Whirling Gears,36,,,5 turns,100%,Mechanical,0
+Hammer,10,,,4 turns,100%,Mechanical,0
+Dive Bomb,45,,,5 turns,100%,Mechanical,0
+Heroic Leap,30,,1 turns,4 turns,100%,Humanoid,0
+Surge of Darkness,25,,1 turns,3 turns,25%,Humanoid,0
+Bronze Breath,21,,,,100%,Dragonkin,0
+Flyby X,20,,5 turns,,100%,Flying,0
+Furious Flapping,10,,,1 turns,100%,Flying,0
+Meat Hook,10,,,2 turns,100%,Undead,0
+Surrender in Terror,,,,,200%,Undead,0
+Onyx Wall,,,,5 turns,100%,Magic,0
+Time Stop,,,1 turns,5 turns,100%,Magic,0
+Elune's Grace,,54,,5 turns,100%,Magic,0
+Void Burst,60,,,,100%,Magic,0
+Boulder Toss,20,,2 turns,,100%,Elemental,0
+Transmute: Enemy to On Fire,21,,,,100%,Elemental,0
+Tough n' Cuddly,,,3 turns,4 turns,100%,Beast,0
+Knot of Snakes,,,1 turns,5 turns,100%,Beast,0
+Bloody Revenge,40,120,,2 turns,100%,Beast,0
+Eat the Fly,,10,,3 turns,100%,Aquatic,0
+Evolving Bite,5,5000,5 turns,,100%,Aquatic,0
+Healing Wrap X,,40,,2 turns,100%,Aquatic,0
+Storm Coil,27,,,3 turns,100%,Mechanical,0
+Annoying Shield,,,1 turns,4 turns,100%,Mechanical,0
+Bore,20,,,,100%,Mechanical,0
+Decoy X,,,,4 turns,100%,Mechanical,0
+Mega Jolt,12,,4 turns,,100%,Mechanical,0
+Personal Inferno,13,,,,100%,Mechanical,0
+ReplaceAbilityThings,,,1 turns,,100%,Humanoid,0
+Righteous Inspiration,,,1 turns,8 turns,100%,Magic,0
+Void Tremors,,,2 turns,3 turns,100%,Magic,0
+Quantum Strike,30,,,,100%,Magic,0
+Heat Up,,,3 turns,4 turns,100%,Elemental,0
+Reforge,,,2 turns,5 turns,100%,Elemental,0
+Spark X,40,,,1 turns,50%,Elemental,0
+Holy Nova,33,,,3 turns,100%,Elemental,0
+Hoof Pummel,30,,,,100%,Beast,0
+Deep Claw,21,,,,100%,Aquatic,0
+Toxic Spray X,50,,5 turns,5 turns,100%,Aquatic,0
+Ray of Hope,,45,9 turns,5 turns,100%,Aquatic,0
+Multi-Stab,40,,,,50%,Mechanical,0
+Zap,70,,,3 turns,100%,Mechanical,0
+Quick Dodge,,,1 turns,2 turns,100%,Humanoid,0
+Draconic Remedy,,60,,4 turns,100%,Dragonkin,0
+DATA ERROR,70,,,,10%,Magic,0
+Murder the Innocent,,,,,200%,Magic,0
+Volcano,,,3 turns,5 turns,100%,Elemental,0
+Gold Rush,50,,,1 turns,100%,Elemental,0
+Slow Digestion,20,,,3 turns,100%,Elemental,0
+Turn Up the Heat,20,,,,100%,Elemental,0
+Howl X,,,2 turns,3 turns,100%,Beast,0
+Terrify,10,,1 turns,2 turns,100%,Mechanical,0
+The Biggest Hammer,25,,100 turns,4 turns,100%,Mechanical,0
+Whirlwind Dance,25,,2 turns,4 turns,100%,Flying,0
+Super Acidic Goo,,,3 turns,,100%,Critter,0
+Rapid Consumption,20,,,3 turns,100%,Elemental,0
+Hungry Bite,30,200,,2 turns,100%,Beast,0
+Metal Shield,,,,2 turns,100%,Mechanical,0
+Massive Explosion,150,,,,100%,Mechanical,0
