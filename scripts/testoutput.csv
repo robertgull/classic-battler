@@ -1,0 +1,10 @@
+ID,Name,Damage,Healing,Duration,Cooldown,Accuracy,Type,Popularity,Description
+1398,Feathered Frenzy,25,,1 turns,3 turns,100%,Flying,1,"Attacks wildly, dealing 17.5 to 32.5 Flying damage and entering a frenzy for 1 rounds.  While frenzied, damage dealt is increased by 50% and the user takes damage as if they were a Flying pet."
+1411,Grave Destruction,36,,,5 turns,100%,Undead,1,"100% Hit Chance  Deals 36 Undead damage to the enemy team, split evenly amongst them.  Destroys objects created by both teams. Used by 4 battle pets."
+573,Nature's Touch,,30,,3 turns,100%,Critter,1,Restores 30 health to the user. Used by 14 battle pets. In the Critter Battle Pet Abilities category. Always up to date with the latest patch.
+431,Jadeskin,,,5 turns,,100%,Magic,1,Reduces up to 5 damage from each attack against you.   Lasts 5 rounds. Used by 6 battle pets. In the Magic Battle Pet Abilities category. Always up to date.
+1555,Worst Fear,40,,,3 turns,50%,Magic,1,"50% Hit Chance  Channels the enemy's worst fear, causing 40 Magic damage.   Always hits if the target is Sleeping or Stunned. Used by 5 battle pets."
+575,Slippery Ice,10,,4 turns,,100%,Elemental,1,"100% Hit Chance  Shoots a jet of rapidly chilling ice, dealing 10 Elemental damage and coats the ground near the enemy with ice.  Frozen ground causes enemies to be Chilled and reduces hit chance by 20%. Lasts 4 rounds. Persists through pet swaps."
+628,Rock Barrage,32,,3 turns,2 turns,50%,Elemental,1,"50% Hit Chance  Hurls rocks at the enemy, dealing up to 32 Elemental damage.   Rocks continue to fall on the enemy's current pet, dealing 6 Elemental damage each round for 3 rounds."
+1055,Breath of Sorrow,25,,2 turns,3 turns,100%,Elemental,1,"100% Hit Chance  Breathes sorrow onto the enemy, dealing 25 Elemental damage and causing the target to receive 50% less healing for 2 rounds."
+2255,Corrupted Ground,,,9 turns,,100%,Elemental,1,100% Hit Chance  Deals 3 Elemental damage to the enemy's active pet every round for 9 rounds. Persists through pet swaps. Used by 2 battle pets.

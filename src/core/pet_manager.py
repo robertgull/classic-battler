@@ -1,28 +1,32 @@
 import asyncio
+from typing import Optional
 
-from core.pet_type_chart import pet_type_matrix
-from repository.mongo_db import MongoDb
-from repository.interface.database import DbBase
-from core.models import BattlePet, PetType, Ability
+from src.core.pet_type_chart import pet_type_matrix
+from src.repository.mongo_db import MongoDb
+from src.repository.interface.database import DbBase
+from src.core.models import BattlePet, PetType, Ability
 
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
     return [
-        pet_type for pet_type, matchup in pet_type_matrix.items()
+        pet_type
+        for pet_type, matchup in pet_type_matrix.items()
         if target_type in matchup.get("strong_against", [])
     ]
 
 
+
 class PetManager:
-    def __init__(self, db: DbBase = None) -> None:
+    def __init__(self, db: Optional[DbBase] = None) -> None:
         self.db = db or MongoDb()
-        #self.db.populate_battle_pets("data/mop_battle_pets.csv")a
 
     async def list_battle_pets(self) -> list[BattlePet]:
         """List all battle pets in the database."""
         return await self.db.get_all_battle_pets()
 
-    async def find_pets_with_ability_type(self, ability_type: PetType) -> list[BattlePet]:
+    async def find_pets_with_ability_type(
+        self, ability_type: PetType
+    ) -> list[BattlePet]:
         # 1. Get all pets
         pets = await self.db.get_all_battle_pets()
 
@@ -34,7 +38,8 @@ class PetManager:
 
         # 4. Filter pets that reference one or more of those abilities
         matching_pets = [
-            pet for pet in pets
+            pet
+            for pet in pets
             if any(ability_id in ability_ids_of_type for ability_id in pet.abilities)
         ]
 
@@ -44,7 +49,9 @@ class PetManager:
         """Find all battle pets of a specific type."""
         return await self.db.get_battle_pet_by_type(pet_type)
 
-    async def ability_is_effective_against(self, attack: Ability, defender: PetType) -> bool:
+    async def ability_is_effective_against(
+        self, attack: Ability, defender: PetType
+    ) -> bool:
         """Check if an ability is effective against a specific pet type."""
         # Get the type of the ability
         ability_type = await self.db.get_ability(attack.id)
@@ -56,11 +63,15 @@ class PetManager:
             return True
         return False
 
-    async def attacker_is_effective_against(self, attacker: BattlePet, defender: BattlePet) -> bool:
+    async def attacker_is_effective_against(
+        self, attacker: BattlePet, defender: BattlePet
+    ) -> bool:
         """Check if an attack from one pet is effective against another."""
         for ability_id in attacker.abilities:
             ability = await self.db.get_ability(ability_id)
-            if ability and await self.ability_is_effective_against(ability, defender.type):
+            if ability and await self.ability_is_effective_against(
+                ability, defender.type
+            ):
                 return True
         return False
 
@@ -75,10 +86,14 @@ class PetManager:
             abilities.extend(await self.db.get_ability_by_type(ability_type))
 
         # Step 3: Filter for damaging abilities
-        damaging_abilities = [
-            ability for ability in abilities
-            if ability.damage and ability.damage.strip().lower() != "0"
-        ]
+        damaging_abilities = []
+
+        for ability in abilities:
+            if ability.damage and ability.damage.strip().lower() != "0":
+                print(f"✅ Included: {ability.name} (damage = {ability.damage})")
+                damaging_abilities.append(ability)
+            else:
+                print(f"❌ Skipped: {ability.name} (damage = {ability.damage})")
 
         # Step 4: Collect their IDs
         damaging_ability_ids = {ability.id for ability in damaging_abilities}
@@ -88,13 +103,16 @@ class PetManager:
 
         # Step 6: Filter pets that use at least one damaging strong ability
         matching_pets = [
-            pet for pet in all_pets
+            pet
+            for pet in all_pets
             if any(ability_id in damaging_ability_ids for ability_id in pet.abilities)
         ]
 
         return matching_pets
 
-    async def list_pets_defensive_against(self, attack_type: PetType) -> list[BattlePet]:
+    async def list_pets_defensive_against(
+        self, attack_type: PetType
+    ) -> list[BattlePet]:
         """List all pets that are defensively strong (resistant to) a specific attack type."""
         resistant_types = pet_type_matrix.get(attack_type, {}).get("weak_against", [])
         pets = []
@@ -105,19 +123,37 @@ class PetManager:
     async def double_tappers(self) -> list[BattlePet]:
         """List all pets that are double-tappers (strong against Aquatic and defensive against Flying)."""
         strong_against_aquatic = await self.list_pets_strong_against(PetType.AQUATIC)
-        defensive_against_flying = await self.list_pets_defensive_against(PetType.FLYING)
+        defensive_against_flying = await self.list_pets_defensive_against(
+            PetType.FLYING
+        )
         return list(set(strong_against_aquatic) & set(defensive_against_flying))
 
-#test
+
+# test
 async def main():
     manager = PetManager()
-    double_tap_type = PetType.BEAST  # Example type for double-tapping
+    double_tap_type = PetType.UNDEAD  # Example type for double-tapping
 
     list_pets_strong_against = await manager.list_pets_strong_against(double_tap_type)
-    print(f"Pets strong against {double_tap_type}: {[pet.name for pet in list_pets_strong_against]}")
-    list_pets_defensive_against = await manager.list_pets_defensive_against(double_tap_type)
-    print(f"Pets defensive against {double_tap_type}: {[pet.name for pet in list_pets_defensive_against]}")
-    combined_list = list(set(list_pets_strong_against) & set(list_pets_defensive_against))
-    print(f"Combined list of pets strong against {double_tap_type} and defensive against {double_tap_type}: {[pet.name for pet in combined_list]}")
+    print(
+        f"Pets strong against {double_tap_type}: {[pet.name for pet in list_pets_strong_against]}"
+    )
+    list_pets_defensive_against = await manager.list_pets_defensive_against(
+        double_tap_type
+    )
+    print(
+        f"Pets defensive against {double_tap_type}: {[pet.name for pet in list_pets_defensive_against]}"
+    )
+    combined_list = list(
+        set(list_pets_strong_against) & set(list_pets_defensive_against)
+    )
+    print(
+        f"Combined list of pets strong against {double_tap_type} and defensive against {double_tap_type}: {[pet for pet in combined_list]}"
+    )
+    print(
+        f"Combined list of pets strong against {double_tap_type} and defensive against {double_tap_type}: {[f'{pet.name} from {pet.source}' for pet in combined_list]}"
+    )
+
+
 if __name__ == "__main__":
     asyncio.run(main())

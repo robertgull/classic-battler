@@ -1,0 +1,101 @@
+ID,Name,Level,Health,Power,Speed,Breed,Abilities,Source,Type,Popularity,Untameable
+71163,Unborn Val'kyr,25,1481,276,276,#3 B/B,"[210, 212, 652, 422, 218, 321]",Pet Battle,Undead,8,False
+68659,Anubisath Idol,25,1725,260,260,#6 H/H,"[406, 453, 490, 390, 436, 814]",Drop,Humanoid,5,False
+68850,Emerald Proto-Whelp,25,1465,289,273,#10 P/B,"[115, 611, 612, 525, 597, 598]",Pet Battle,Dragonkin,5,False
+62555,Flayer Youngling,25,1481,276,276,#3 B/B,"[713, 426, 307, 355, 490, 124]",Pet Battle,Humanoid,5,False
+68845,Nexus Whelpling,25,1465,289,273,#10 P/B,"[122, 763, 592, 782, 489, 589]",Pet Battle,Dragonkin,5,False
+61080,Rabbit,25,1481,276,276,#3 B/B,"[119, 162, 159, 360, 312, 163]","Pet Battle-Stormwind City, Elwynn Forest, …",Critter,3,False
+68662,Chrominius,25,1725,260,260,#6 H/H,"[110, 362, 802, 299, 611, 593]",Drop,Dragonkin,3,False
+63098,Gilnean Raven,25,1481,276,276,#3 B/B,"[112, 792, 517, 504, 256, 522]",Vendor,Flying,2,False
+62317,Minfernal,25,1481,276,276,#3 B/B,"[406, 409, 407, 178, 392, 282]",Pet Battle,Magic,2,False
+62395,Nether Faerie Dragon,25,1465,273,289,#11 S/B,"[420, 440, 595, 421, 277, 190]",Pet Battle,Dragonkin,2,False
+62621,Fel Flame,25,1546,260,289,#9 H/S,"[113, 178, 179, 501, 172, 409]",Pet Battle,Elemental,2,False
+61718,Jade Oozeling,25,1481,276,276,#3 B/B,"[445, 447, 450, 449, 448, 369]",Pet Battle,Magic,2,False
+61826,Blighthawk,25,1481,276,276,#3 B/B,"[117, 665, 170, 420, 654, 190]",Pet Battle,Undead,2,False
+61375,Restless Shadeling,25,1546,260,289,#9 H/S,"[422, 657, 121, 421, 214, 764]",Pet Battle,Undead,2,False
+62526,Qiraji Guardling,25,1481,276,276,#3 B/B,"[406, 521, 186, 741, 453, 227]",Pet Battle,Humanoid,1,False
+62888,Nordrassil Wisp,25,1481,276,276,#3 B/B,"[114, 463, 751, 461, 421, 299]",Pet Battle,Magic,1,False
+62854,Scourged Whelpling,25,1400,289,289,#8 P/S,"[393, 256, 657, 122, 214, 668]",Pet Battle,Undead,1,False
+66950,Pandaren Water Spirit,25,1546,260,289,#9 H/S,"[118, 123, 564, 419, 513, 418]",Quest,Elemental,1,False
+62864,Arctic Fox Kit,25,1400,289,289,#8 P/S,"[110, 165, 364, 360, 362, 366]",Pet Battle,Beast,1,False
+61324,Baby Ape,25,1481,276,276,#3 B/B,"[349, 347, 352, 492, 350, 354]",Pet Battle,Beast,1,False
+68819,Arcane Eye,25,1400,289,289,#8 P/S,"[473, 475, 474, 483, 486, 489]",Pet Battle,Magic,1,False
+62312,Frog,25,1481,276,276,#3 B/B,"[118, 123, 233, 228, 230, 232]",Pet Battle,Aquatic,1,False
+61329,Scorpling,25,1481,276,276,#3 B/B,"[356, 165, 359, 355, 357, 124]",Pet Battle,Beast,1,False
+62201,Spawn of Onyxia,25,1465,289,273,#10 P/B,"[115, 168, 170, 122, 172, 169]",Pet Battle,Dragonkin,1,False
+68838,Fluxfire Feline,25,1400,289,289,#8 P/S,"[429, 923, 536, 535, 389, 208]",Pet Battle,Mechanical,1,False
+62258,Silithid Hatchling,25,1481,276,276,#3 B/B,"[119, 155, 706, 538, 283, 453]",Pet Battle,Beast,1,False
+62130,Giraffe Calf,25,1481,276,276,#3 B/B,"[493, 254, 376, 163, 283, 539]",Pet Battle,Beast,1,False
+62022,Larva,25,1481,276,276,#3 B/B,"[367, 369, 364, 160, 371, 159]",Pet Battle,Beast,1,False
+61755,Snowshoe Hare,25,1481,276,276,#3 B/B,"[119, 162, 159, 360, 312, 163]",Pet Battle,Critter,1,False
+71014,Lil' Bad Wolf,25,1481,276,276,#3 B/B,"[429, 314, 362, 158, 312, 535]",Drop,Humanoid,1,False
+67443,Crow,25,1481,276,276,#3 B/B,"[112, 524, 870, 504, 256, 517]",Pet Battle,Flying,1,False
+61703,Tiny Twister,25,1465,289,273,#10 P/B,"[420, 515, 190, 514, 348, 204]",Pet Battle,Elemental,1,False
+62129,Cheetah Cub,25,1400,260,325,#5 S/S,"[429, 492, 538, 535, 357, 536]","Pet Battle-Northern Barrens, Southern Barrens",Beast,1,False
+213605,Arfus,25,1481,276,276,,"[648, 2530, 2531, 2532, 624, 2533]",Achievement,Undead,1,False
+64899,Mechanical Pandaren Dragonling,25,1400,260,325,#5 S/S,"[115, 647, 282, 515, 779, 334]",Profession-Mechanical Pandaren Dragonling,Mechanical,1,False
+63365,Terrible Turnip,25,1400,289,289,#8 P/S,"[826, 745, 404, 419, 298, 828]",Drop,Elemental,1,False
+62019,Cat,25,1481,276,276,#3 B/B,"[429, 492, 538, 535, 357, 536]",Pet Battle,Beast,1,False
+48609,Clockwork Gnome,25,1465,273,289,#11 S/B,"[384, 278, 710, 712, 713, 293]",Profession,Mechanical,1,False
+26056,Chuck,25,1481,276,276,#3 B/B,"[803, 509, 538, 160, 118, 423]",Profession-Bag of Fishing Treasures,Aquatic,1,False
+61686,Tiny Bog Beast,25,1546,260,289,#9 H/S,"[406, 394, 398, 350, 364, 124]",Pet Battle,Elemental,1,False
+61758,Infested Bear Cub,25,1546,289,260,#7 H/P,"[499, 348, 345, 347, 247, 663]",Pet Battle,Undead,1,False
+65203,Emperor Crab,25,1725,260,260,#6 H/H,"[356, 511, 310, 509, 123, 513]",Pet Battle,Aquatic,1,False
+68820,Infinite Whelpling,25,1465,289,273,#10 P/B,"[122, 168, 405, 594, 471, 792]",Pet Battle,Dragonkin,1,False
+62257,Sand Kitten,25,1400,289,289,#8 P/S,"[429, 492, 538, 535, 357, 536]",Pet Battle,Beast,1,False
+18839,Magical Crawdad,25,1725,260,260,#6 H/H,"[356, 511, 513, 509, 310, 273]",Profession,Aquatic,1,False
+68658,Mini Mindslayer,25,1400,289,289,#8 P/S,"[475, 488, 474, 489, 216, 277]",Drop,Magic,1,False
+62177,Forest Moth,25,1481,276,276,#3 B/B,"[420, 506, 507, 504, 162, 508]",Pet Battle-Ashenvale,Flying,1,False
+55356,Darkmoon Tonk,25,1546,289,260,#7 H/P,"[777, 646, 301, 778, 634, 209]",Vendor-Lhara,Mechanical,1,False
+61459,Little Black Ram,25,1481,276,276,#3 B/B,"[493, 253, 376, 541, 497, 163]",Pet Battle,Beast,1,False
+68839,Anodized Robo Cub,25,1546,289,260,#7 H/P,"[110, 278, 345, 390, 533, 208]",Pet Battle,Mechanical,1,False
+71159,Gahz'rooki,25,1400,289,289,#8 P/S,"[110, 538, 513, 424, 276, 418]",Vendor,Aquatic,1,False
+73011,Lil' Bling,25,1400,260,325,#5 S/S,"[983, 989, 985, 1002, 392, 293]",Drop,Mechanical,1,False
+68664,Corefire Imp,25,1400,289,289,#8 P/S,"[113, 409, 173, 567, 503, 592]",Drop,Humanoid,1,False
+68805,Stunted Yeti,25,1546,273,273,#12 H/B,"[202, 314, 124, 111, 762, 348]",Pet Battle,Humanoid,1,False
+71016,Netherspace Abyssal,25,1400,289,289,#8 P/S,"[406, 409, 407, 178, 282, 466]",Drop,Magic,1,False
+68806,Lofty Libram,25,1546,273,273,#12 H/B,"[421, 299, 216, 422, 488, 218]",Pet Battle,Magic,1,False
+68804,Harpy Youngling,25,1481,276,276,#3 B/B,"[184, 515, 524, 420, 158, 170]",Pet Battle,Humanoid,1,False
+68665,Harbinger of Flame,25,1400,325,260,#4 P/P,"[219, 319, 800, 113, 178, 179]",Drop,Humanoid,1,False
+61691,Irradiated Roach,25,1546,273,273,#12 H/B,"[119, 155, 706, 193, 283, 519]",Pet Battle,Critter,1,False
+62900,Wildhammer Gryphon Hatchling,25,1481,276,276,#3 B/B,"[112, 420, 581, 524, 162, 170]",Pet Battle,Flying,1,False
+62628,Scalded Basilisk Hatchling,25,1546,273,273,#12 H/B,"[110, 347, 202, 569, 568, 357]",Pet Battle,Beast,1,False
+62820,Water Waveling,25,1481,276,276,#3 B/B,"[118, 414, 418, 413, 416, 419]",Pet Battle,Elemental,1,False
+62564,Sporeling Sprout,25,1481,276,276,#3 B/B,"[219, 743, 746, 778, 745, 165]",Pet Battle,Humanoid,1,False
+71033,Fiendish Imp,25,1465,289,273,#10 P/B,"[113, 409, 567, 763, 503, 466]",Drop,Humanoid,1,False
+62435,Crystal Spider,25,1481,276,276,#3 B/B,"[378, 339, 383, 569, 382, 250]",Pet Battle,Beast,1,False
+62953,Sea Gull,25,1481,276,276,#3 B/B,"[420, 190, 521, 202, 162, 170]",Pet Battle,Flying,1,False
+62669,Fjord Worg Pup,25,1546,289,260,#7 H/P,"[110, 165, 364, 360, 362, 366]",Pet Battle,Beast,1,False
+61259,Widow Spiderling,25,1481,276,276,#3 B/B,"[378, 339, 383, 380, 382, 250]",Pet Battle-Duskwood,Beast,1,False
+62187,Stone Armadillo,25,1546,260,289,#9 H/S,"[119, 310, 117, 202, 347, 566]",Pet Battle,Critter,1,False
+71019,Coilfang Stalker,25,1481,276,276,#3 B/B,"[482, 323, 593, 473, 465, 488]",Drop,Magic,1,False
+62120,Rabid Nut Varmint 5000,25,1481,276,276,#3 B/B,"[384, 389, 666, 202, 392, 278]",Pet Battle,Mechanical,1,False
+68663,Death Talon Whelpguard,25,1400,325,260,#4 P/P,"[713, 741, 792, 393, 315, 350]",Drop,Dragonkin,1,False
+68841,Cogblade Raptor,25,1481,276,276,#3 B/B,"[110, 389, 305, 455, 357, 278]",Pet Battle,Mechanical,1,False
+71017,Tideskipper,25,1546,260,289,#9 H/S,"[406, 419, 350, 249, 532, 418]",Drop,Aquatic,1,False
+68846,Kun-Lai Runt,25,1465,289,273,#10 P/B,"[202, 314, 124, 221, 416, 481]",Pet Battle,Humanoid,1,False
+61889,Undercity Rat,25,1481,276,276,#3 B/B,"[119, 360, 163, 253, 152, 283]",Pet Battle,Critter,1,False
+61322,Polly,25,1465,289,273,#10 P/B,"[420, 521, 170, 202, 162, 190]",Pet Battle-Northern Stranglethorn,Flying,1,False
+62020,Ruby Sapling,25,1481,276,276,#3 B/B,"[119, 318, 268, 962, 630, 400]",Pet Battle,Elemental,1,False
+62627,Fledgling Nether Ray,25,1465,289,273,#10 P/B,"[110, 122, 422, 421, 420, 394]",Pet Battle,Flying,1,False
+7554,Snowy Owl,25,1481,276,276,#3 B/B,"[112, 784, 517, 184, 190, 518]",Pet Battle,Flying,1,True
+62640,Devouring Maggot,25,1546,260,289,#9 H/S,"[367, 369, 364, 160, 371, 159]",Pet Battle,Beast,1,False
+71022,Phoenix Hawk Hatchling,25,1546,273,273,#12 H/B,"[429, 492, 501, 184, 515, 170]",Drop,Dragonkin,1,False
+68666,Ashstone Core,25,1546,260,289,#9 H/S,"[484, 263, 569, 113, 436, 609]",Drop,Elemental,1,False
+59358,Darkmoon Rabbit,25,1481,276,276,#3 B/B,"[119, 851, 159, 849, 312, 163]",Drop,Critter,1,False
+62697,Oily Slimeling,25,1481,276,276,#3 B/B,"[445, 447, 450, 449, 448, 369]",Pet Battle,Magic,1,False
+62524,Scarab Hatchling,25,1546,273,273,#12 H/B,"[119, 155, 706, 193, 283, 519]",Pet Battle,Critter,1,False
+62246,Shimmershell Snail,25,1481,276,276,#3 B/B,"[445, 369, 564, 449, 310, 376]",Pet Battle,Critter,1,False
+62885,Carrion Rat,25,1481,276,276,#3 B/B,"[119, 360, 163, 253, 152, 283]",Pet Battle,Critter,0,False
+62816,Stunted Shardhorn,25,1725,260,260,#6 H/H,"[349, 377, 375, 283, 571, 163]",Pet Battle,Beast,0,False
+68656,Giant Bone Spider,25,1400,289,289,#8 P/S,"[648, 339, 383, 380, 212, 780]",Drop,Undead,0,False
+71015,Menagerie Custodian,25,1546,260,289,#9 H/S,"[116, 646, 301, 389, 390, 209]",Drop,Mechanical,0,False
+60649,Black Lamb,25,1546,273,273,#12 H/B,"[493, 253, 541, 539, 497, 163]",Pet Battle-Elwynn Forest,Critter,0,False
+62034,Spirit Crab,25,1546,260,289,#9 H/S,"[356, 509, 310, 488, 513, 476]",Pet Battle,Undead,0,False
+62815,Biletoad,25,1481,276,276,#3 B/B,"[118, 123, 233, 228, 230, 232]",Pet Battle,Aquatic,0,False
+62638,Skittering Cavern Crawler,25,1481,276,276,#3 B/B,"[378, 339, 383, 380, 382, 250]",Pet Battle,Beast,0,False
+68661,Untamed Hatchling,25,1546,289,260,#7 H/P,"[429, 347, 609, 122, 315, 168]",Drop,Dragonkin,0,False
+62313,Rusty Snail,25,1481,276,276,#3 B/B,"[445, 369, 564, 449, 310, 376]",Pet Battle,Critter,0,False
+62119,Robo-Chick,25,1481,276,276,#3 B/B,"[112, 389, 208, 455, 533, 459]",Pet Battle,Mechanical,0,False
+71018,Tainted Waveling,25,1481,276,276,#3 B/B,"[445, 369, 123, 380, 447, 448]",Drop,Elemental,0,False
+62255,Twilight Iguana,25,1481,276,276,#3 B/B,"[429, 357, 253, 563, 355, 802]",Pet Battle,Beast,0,False
