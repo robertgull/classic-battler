@@ -4,8 +4,8 @@ import ast
 from pathlib import Path
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import MongoClient  # Used for creating indexes
-from backend.src.core.models import BattlePet, PetType, Ability
-from backend.src.repository.interface.database import DbBase
+from src.core.models import BattlePet, PetType, Ability
+from src.repository.interface.database import DbBase
 
 
 class MongoDb(DbBase):

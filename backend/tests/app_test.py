@@ -1,5 +1,5 @@
 import asyncio
-from backend.src.app import create_app
+from src.app import create_app
 
 
 async def test():

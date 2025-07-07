@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Query
-from backend.src.core.pet_manager import PetManager
-from backend.src.core.models import BattlePet, PetType
+from src.core.pet_manager import PetManager
+from src.core.models import BattlePet, PetType
 from fastapi.middleware.cors import CORSMiddleware
 
 

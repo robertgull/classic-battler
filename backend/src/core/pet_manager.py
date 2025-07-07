@@ -1,10 +1,10 @@
 import asyncio
 from typing import Optional
 
-from backend.src.core.pet_type_chart import pet_type_matrix
-from backend.src.repository.mongo_db import MongoDb
-from backend.src.repository.interface.database import DbBase
-from backend.src.core.models import BattlePet, PetType, Ability
+from src.core.pet_type_chart import pet_type_matrix
+from src.repository.mongo_db import MongoDb
+from src.repository.interface.database import DbBase
+from src.core.models import BattlePet, PetType, Ability
 
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
