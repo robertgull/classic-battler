@@ -1,10 +1,10 @@
 import asyncio
 from typing import Optional
 
-from src.core.pet_type_chart import pet_type_matrix
-from src.repository.mongo_db import MongoDb
-from src.repository.interface.database import DbBase
-from src.core.models import BattlePet, PetType, Ability
+from backend.src.core.pet_type_chart import pet_type_matrix
+from backend.src.repository.mongo_db import MongoDb
+from backend.src.repository.interface.database import DbBase
+from backend.src.core.models import BattlePet, PetType, Ability
 
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
@@ -13,7 +13,6 @@ def find_types_strong_against(target_type: PetType) -> list[PetType]:
         for pet_type, matchup in pet_type_matrix.items()
         if target_type in matchup.get("strong_against", [])
     ]
-
 
 
 class PetManager:
@@ -127,7 +126,9 @@ class PetManager:
     async def double_tappers(self, type_to_counter: PetType) -> list[BattlePet]:
         """List all pets that are double-tappers (strong against Aquatic and defensive against Flying)."""
         list_pets_strong_against = await self.list_pets_strong_against(type_to_counter)
-        list_pets_defensive_against = await self.list_pets_defensive_against(type_to_counter)
+        list_pets_defensive_against = await self.list_pets_defensive_against(
+            type_to_counter
+        )
         return list(set(list_pets_strong_against) & set(list_pets_defensive_against))
 
 

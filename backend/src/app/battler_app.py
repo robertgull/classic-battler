@@ -1,7 +1,8 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Query
-from src.core.pet_manager import PetManager
-from src.core.models import BattlePet, PetType
+from backend.src.core.pet_manager import PetManager
+from backend.src.core.models import BattlePet, PetType
 from fastapi.middleware.cors import CORSMiddleware
+
 
 class BattlerApp:
     def __init__(self):
@@ -26,12 +27,15 @@ class BattlerApp:
             return await self.manager.get_pet(_id)
 
         @self.router.get("/battle_pets/list_double_counters")
-        async def list_double_counters(_type: str = Query(..., description="Pet type (e.g. 'Aquatic', 'Beast')")) -> \
-        list[BattlePet]:
+        async def list_double_counters(
+            _type: str = Query(..., description="Pet type (e.g. 'Aquatic', 'Beast')"),
+        ) -> list[BattlePet]:
             try:
                 type_enum = PetType(_type)
             except ValueError:
-                raise HTTPException(status_code=400, detail=f"Invalid pet type: {_type}")
+                raise HTTPException(
+                    status_code=400, detail=f"Invalid pet type: {_type}"
+                )
             return await self.manager.double_tappers(type_enum)
 
         self.app.include_router(self.router)

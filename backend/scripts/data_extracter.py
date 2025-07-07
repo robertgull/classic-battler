@@ -6,20 +6,37 @@ import pandas as pd
 import re
 from bs4 import BeautifulSoup
 
+
 def extract_mop_battle_pets(csv_path=r"../data/mop_battle_pets.csv"):
     if not os.path.exists(csv_path):
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "ID", "Name", "Level", "Health", "Power", "Speed", "Breed",
-                "Abilities", "Source", "Type", "Popularity", "Untameable"
-            ])
+            writer.writerow(
+                [
+                    "ID",
+                    "Name",
+                    "Level",
+                    "Health",
+                    "Power",
+                    "Speed",
+                    "Breed",
+                    "Abilities",
+                    "Source",
+                    "Type",
+                    "Popularity",
+                    "Untameable",
+                ]
+            )
     with sync_playwright() as p:
         for offset in range(0, 900, 100):
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
             page.set_default_timeout(200000)
-            url = f"https://www.wowhead.com/mop-classic/battle-pets#petspecies;{offset}" if offset else "https://www.wowhead.com/mop-classic/battle-pets#petspecies"
+            url = (
+                f"https://www.wowhead.com/mop-classic/battle-pets#petspecies;{offset}"
+                if offset
+                else "https://www.wowhead.com/mop-classic/battle-pets#petspecies"
+            )
             print(f"Scraping: {url}")
             page.goto(url, wait_until="networkidle")
             page.wait_for_selector("table.listview-mode-default")
@@ -60,20 +77,32 @@ def extract_mop_battle_pets(csv_path=r"../data/mop_battle_pets.csv"):
                 _type = cells[9].inner_text().strip()
 
                 popularity_span = cells[10].query_selector("span")
-                class_attr = popularity_span.get_attribute("class") if popularity_span else ""
+                class_attr = (
+                    popularity_span.get_attribute("class") if popularity_span else ""
+                )
                 match = re.search(r"popularity-(\d+)", class_attr)
                 popularity = int(match.group(1)) if match else None
 
                 row = [
-                    pet_id, name, level, health, power, speed, breed,
-                    abilities, source, _type, popularity, is_untameable
+                    pet_id,
+                    name,
+                    level,
+                    health,
+                    power,
+                    speed,
+                    breed,
+                    abilities,
+                    source,
+                    _type,
+                    popularity,
+                    is_untameable,
                 ]
-                with open(csv_path, "a",
-                          encoding="utf-8", newline="") as f:
+                with open(csv_path, "a", encoding="utf-8", newline="") as f:
                     writer = csv.writer(f)
                     writer.writerow(row)
 
             browser.close()
+
 
 def read_description(url, page):
     """Helper function to read the description from a pet or ability page."""
@@ -89,14 +118,25 @@ def read_description(url, page):
         print(f"⚠️ Failed to read description: {e}")
     return ""
 
+
 def extract_mop_battle_pet_abilities(csv_path=r"../data/mop_battle_pet_abilities.csv"):
     if not os.path.exists(csv_path):
         with open(csv_path, "w", encoding="utf-8", newline="") as f:
             writer = csv.writer(f)
-            writer.writerow([
-                "ID", "Name", "Damage", "Healing", "Duration", "Cooldown",
-                "Accuracy", "Type", "Popularity", "Description"
-            ])
+            writer.writerow(
+                [
+                    "ID",
+                    "Name",
+                    "Damage",
+                    "Healing",
+                    "Duration",
+                    "Cooldown",
+                    "Accuracy",
+                    "Type",
+                    "Popularity",
+                    "Description",
+                ]
+            )
 
     with sync_playwright() as p:
         for offset in range(400, 900, 100):
@@ -104,7 +144,11 @@ def extract_mop_battle_pet_abilities(csv_path=r"../data/mop_battle_pet_abilities
             page = browser.new_page()
             detail_page = browser.new_page()
             page.set_default_timeout(200000)
-            url = f"https://www.wowhead.com/battle-pet-abilities#{offset}" if offset else "https://www.wowhead.com/battle-pet-abilities"
+            url = (
+                f"https://www.wowhead.com/battle-pet-abilities#{offset}"
+                if offset
+                else "https://www.wowhead.com/battle-pet-abilities"
+            )
             print(f"Scraping: {url}")
             page.goto(url, wait_until="networkidle")
             page.wait_for_selector("table.listview-mode-default")
@@ -126,7 +170,11 @@ def extract_mop_battle_pet_abilities(csv_path=r"../data/mop_battle_pet_abilities
                     match = re.search(r"pet-ability=(\d+)", href or "")
                     if match:
                         ability_id = int(match.group(1))
-                ability_url = href if href.startswith("http") else f"https://www.wowhead.com{href}"
+                ability_url = (
+                    href
+                    if href.startswith("http")
+                    else f"https://www.wowhead.com{href}"
+                )
                 description = read_description(ability_url, detail_page)
 
                 print(f"Processing ability: {name} (ID: {ability_id})")
@@ -147,15 +195,22 @@ def extract_mop_battle_pet_abilities(csv_path=r"../data/mop_battle_pet_abilities
                         popularity = int(match.group(1))
 
                 row = [
-                    ability_id, name, damage, healing, duration, cooldown, accuracy, _type, popularity, description
+                    ability_id,
+                    name,
+                    damage,
+                    healing,
+                    duration,
+                    cooldown,
+                    accuracy,
+                    _type,
+                    popularity,
+                    description,
                 ]
-                with open(csv_path, "a",
-                          encoding="utf-8", newline="") as f:
+                with open(csv_path, "a", encoding="utf-8", newline="") as f:
                     writer = csv.writer(f)
                     writer.writerow(row)
             browser.close()
     print("Saved to mop_battle_pet_abilities.csv")
-
 
 
 def extract_pet_descriptions():
@@ -165,7 +220,10 @@ def extract_pet_descriptions():
         browser = p.chromium.launch(headless=True)
         list_page = browser.new_page()
         detail_page = browser.new_page()
-        list_page.goto("https://www.wowhead.com/mop-classic/battle-pets#petspecies", wait_until="networkidle")
+        list_page.goto(
+            "https://www.wowhead.com/mop-classic/battle-pets#petspecies",
+            wait_until="networkidle",
+        )
         list_page.wait_for_selector("table.listview-mode-default")
 
         rows = list_page.query_selector_all("table.listview-mode-default tbody tr")
@@ -178,7 +236,9 @@ def extract_pet_descriptions():
             link = name_cell.query_selector("a")
             name = link.inner_text().strip() if link else ""
             href = link.get_attribute("href") if link else ""
-            pet_url = href if href.startswith("http") else f"https://www.wowhead.com{href}"
+            pet_url = (
+                href if href.startswith("http") else f"https://www.wowhead.com{href}"
+            )
             description = ""
 
             try:
@@ -202,6 +262,7 @@ def extract_pet_descriptions():
     df.to_csv("pet_descriptions.csv", index=False)
     print("✅ Saved to pet_descriptions.csv")
 
+
 def extract_ability_descriptions():
     ability_data = []
 
@@ -212,7 +273,11 @@ def extract_ability_descriptions():
 
         # Handle pagination by increasing the offset if needed
         for offset in range(0, 900, 100):  # Adjust if there are more/less abilities
-            url = f"https://www.wowhead.com/battle-pet-abilities#{offset}" if offset else "https://www.wowhead.com/battle-pet-abilities"
+            url = (
+                f"https://www.wowhead.com/battle-pet-abilities#{offset}"
+                if offset
+                else "https://www.wowhead.com/battle-pet-abilities"
+            )
             print(f"Scraping: {url}")
             list_page.goto(url, wait_until="networkidle")
             list_page.wait_for_selector("table.listview-mode-default")
@@ -228,7 +293,11 @@ def extract_ability_descriptions():
 
                 name = link.inner_text().strip() if link else ""
                 href = link.get_attribute("href") if link else ""
-                ability_url = href if href.startswith("http") else f"https://www.wowhead.com{href}"
+                ability_url = (
+                    href
+                    if href.startswith("http")
+                    else f"https://www.wowhead.com{href}"
+                )
                 ability_id = None
                 match = re.search(r"pet-ability=(\d+)", href or "")
                 if match:
@@ -247,12 +316,14 @@ def extract_ability_descriptions():
                 except Exception as e:
                     print(f"⚠️ Failed for {name}: {e}")
 
-                ability_data.append({
-                    "ID": ability_id,
-                    "Name": name,
-                    "Description": description,
-                    "URL": ability_url,
-                })
+                ability_data.append(
+                    {
+                        "ID": ability_id,
+                        "Name": name,
+                        "Description": description,
+                        "URL": ability_url,
+                    }
+                )
 
         browser.close()
 
@@ -261,9 +332,8 @@ def extract_ability_descriptions():
     df.to_csv("ability_descriptions.csv", index=False)
     print("✅ Saved to ability_descriptions.csv")
 
+
 # Run the extraction function
 if __name__ == "__main__":
-    extract_mop_battle_pets(r"../data/mop_battle_pets_test.csv")
-    #extract_mop_battle_pet_abilities(r"../data/mop_battle_pet_abilities_test.csv")
-
-
+    extract_mop_battle_pets(r"../../data/mop_battle_pets_test.csv")
+    # extract_mop_battle_pet_abilities(r"../data/mop_battle_pet_abilities_test.csv")

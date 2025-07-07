@@ -1,4 +1,4 @@
-from src.core.models import PetType
+from backend.src.core.models import PetType
 
 pet_type_matrix = {
     PetType.AQUATIC: {

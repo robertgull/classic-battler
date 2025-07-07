@@ -1,6 +1,6 @@
 from pathlib import Path
 from typing import Protocol
-from src.core.models import Ability, BattlePet, PetType
+from backend.src.core.models import Ability, BattlePet, PetType
 
 
 class DbBase(Protocol):
