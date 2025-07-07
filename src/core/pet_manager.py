@@ -45,6 +45,10 @@ class PetManager:
 
         return matching_pets
 
+    async def get_pet(self, _id: int) -> BattlePet:
+        """Retrieve a battle pet by its ID."""
+        return await self.db.get_battle_pet(_id)
+
     async def find_pets_by_type(self, pet_type: PetType) -> list[BattlePet]:
         """Find all battle pets of a specific type."""
         return await self.db.get_battle_pet_by_type(pet_type)
@@ -120,13 +124,11 @@ class PetManager:
             pets.extend(await self.db.get_battle_pet_by_type(pet_type))
         return pets
 
-    async def double_tappers(self) -> list[BattlePet]:
+    async def double_tappers(self, type_to_counter: PetType) -> list[BattlePet]:
         """List all pets that are double-tappers (strong against Aquatic and defensive against Flying)."""
-        strong_against_aquatic = await self.list_pets_strong_against(PetType.AQUATIC)
-        defensive_against_flying = await self.list_pets_defensive_against(
-            PetType.FLYING
-        )
-        return list(set(strong_against_aquatic) & set(defensive_against_flying))
+        list_pets_strong_against = await self.list_pets_strong_against(type_to_counter)
+        list_pets_defensive_against = await self.list_pets_defensive_against(type_to_counter)
+        return list(set(list_pets_strong_against) & set(list_pets_defensive_against))
 
 
 # test

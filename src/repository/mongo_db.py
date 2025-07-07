@@ -29,6 +29,7 @@ class MongoDb(DbBase):
         data = await self.db.battle_pets.find_one({"id": _id})
         if data is None:
             raise ValueError(f"Battle pet with id {_id} not found")
+        data.pop("_id", None)
         return BattlePet(**data)
 
     async def get_ability(self, _id: int) -> Ability:
