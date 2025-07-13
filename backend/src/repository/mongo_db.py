@@ -3,7 +3,7 @@ import csv
 import ast
 from pathlib import Path
 from motor.motor_asyncio import AsyncIOMotorClient
-from pymongo import MongoClient # Used for creating indexes
+from pymongo import MongoClient  # Used for creating indexes
 from src.core.models import BattlePet, PetType, Ability
 from src.repository.interface.database import DbBase
 
@@ -21,8 +21,8 @@ class MongoDb(DbBase):
             uuidrepresentation="standard",
         )
         self.db = client.get_default_database()
-        #self.db.abilities.create_index("id", unique=True) # pyright: ignore[reportUnusedCoroutine]
-        #self.db.battle_pets.create_index("id", unique=True) # pyright: ignore[reportUnusedCoroutine]
+        # self.db.abilities.create_index("id", unique=True) # pyright: ignore[reportUnusedCoroutine]
+        # self.db.battle_pets.create_index("id", unique=True) # pyright: ignore[reportUnusedCoroutine]
 
     async def get_battle_pet(self, _id: int) -> BattlePet:
         """Retrieve a battle pet by its id."""

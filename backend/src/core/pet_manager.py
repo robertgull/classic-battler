@@ -15,7 +15,6 @@ def find_types_strong_against(target_type: PetType) -> list[PetType]:
     ]
 
 
-
 class PetManager:
     def __init__(self, db: Optional[DbBase] = None) -> None:
         self.db = db or MongoDb()
@@ -127,7 +126,9 @@ class PetManager:
     async def double_tappers(self, type_to_counter: PetType) -> list[BattlePet]:
         """List all pets that are double-tappers (strong against Aquatic and defensive against Flying)."""
         list_pets_strong_against = await self.list_pets_strong_against(type_to_counter)
-        list_pets_defensive_against = await self.list_pets_defensive_against(type_to_counter)
+        list_pets_defensive_against = await self.list_pets_defensive_against(
+            type_to_counter
+        )
         return list(set(list_pets_strong_against) & set(list_pets_defensive_against))
 
 
