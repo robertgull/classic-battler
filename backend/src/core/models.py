@@ -65,10 +65,9 @@ class BattlePet(BaseModel):
 
     @field_validator("abilities")
     @classmethod
-    def ensure_six_abilities(cls, v: list[str]) -> list[str]:
+    def ensure_six_abilities(cls, v: list[int]) -> list[int]:
         if len(v) < 6:
-            # Pad with empty abilities
-            empty_ability = "-1"  # Assuming -1 is used to represent an empty ability
+            empty_ability = -1
             v += [empty_ability] * (6 - len(v))
         elif len(v) > 6:
             v = v[:6]

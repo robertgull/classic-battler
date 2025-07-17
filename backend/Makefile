@@ -1,4 +1,4 @@
-.PHONY: run get check format test setup-mongodb
+.PHONY: run get check format test  mongodb redis
 
 
 
@@ -9,6 +9,16 @@ mongodb:
 	podman machine stop || true
 	podman machine start
 	podman start petdb
+
+redis:
+	@powershell -Command \
+		"if ((podman ps -a --format '{{.Names}}' | Select-String '^redis$$')) { \
+			Write-Host 'Redis container already exists, starting it...'; \
+			podman start redis; \
+		} else { \
+			Write-Host 'Creating and starting new Redis container...'; \
+			podman run --name redis -p 6379:6379 -d redis; \
+		}"
 
 run:
 	@powershell -Command "if (-not (podman ps --format '{{.Names}}' | Select-String -Pattern '^petdb$$')) { Write-Host 'petdb not running, starting it...'; make mongodb } else { Write-Host 'petdb is already running.' }"

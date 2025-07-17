@@ -3,9 +3,11 @@ from typing import Optional
 
 from src.core.pet_type_chart import pet_type_matrix
 from src.repository.mongo_db import MongoDb
+from src.repository.pet_data_handler import PetDataHandler
 from src.repository.interface.database import DbBase
 from src.core.models import BattlePet, PetType, Ability
-
+from src.core.semantic_search import search
+from src.repository.redis_cache import get_cached, set_cached
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
     return [
@@ -17,7 +19,7 @@ def find_types_strong_against(target_type: PetType) -> list[PetType]:
 
 class PetManager:
     def __init__(self, db: Optional[DbBase] = None) -> None:
-        self.db = db or MongoDb()
+        self.db = db or PetDataHandler()
 
     async def list_battle_pets(self) -> list[BattlePet]:
         """List all battle pets in the database."""
@@ -130,6 +132,13 @@ class PetManager:
             type_to_counter
         )
         return list(set(list_pets_strong_against) & set(list_pets_defensive_against))
+
+    async def sem_search_abilities(
+        self, query: str, k: int = 5
+    ) -> list[Ability]:
+        search(query, k=k)
+        pass
+
 
 
 # test
