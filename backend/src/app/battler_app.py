@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Query
 from src.core.pet_manager import PetManager
-from src.core.models import BattlePet, PetType
+from src.core.models import BattlePet, PetType, Ability
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -37,5 +37,9 @@ class BattlerApp:
                     status_code=400, detail=f"Invalid pet type: {_type}"
                 )
             return await self.manager.double_tappers(type_enum)
+
+        @self.router.get("/abilities/get_by_id")
+        async def get_ability_by_id(_id: int) -> Ability:
+            return await self.manager.get_ability(_id)
 
         self.app.include_router(self.router)

@@ -25,6 +25,20 @@ class Ability(BaseModel):
     def __eq__(self, other):
         return isinstance(other, BattlePet) and self.id == other.id
 
+    def __str__(self):
+        parts = [
+            f"{self.name} ({self.id})",
+            f"Type: {self.type}",
+            f"Damage: {self.damage}",
+            f"Healing: {self.healing}",
+            f"Duration: {self.duration}",
+            f"Cooldown: {self.cooldown}",
+            f"Accuracy: {self.accuracy}",
+            f"Popularity: {self.popularity}",
+            f"Description: {self.description}",
+        ]
+        return ". ".join(parts)
+
     id: int = Field(..., description="Unique identifier for the ability")
     name: str = Field(..., description="Name of the ability")
     damage: str = Field(..., description="Damage dealt by the ability")
@@ -39,6 +53,21 @@ class Ability(BaseModel):
 
 class BattlePet(BaseModel):
     """Represents a battle pet with its attributes."""
+
+    def __str__(self):
+        parts = [
+            f"{self.name} (ID: {self.id})",
+            f"Level: {self.level}",
+            f"Health: {self.health}",
+            f"Power: {self.power}",
+            f"Speed: {self.speed}",
+            f"Breed: {self.breed}",
+            f"Source: {self.source}",
+            f"Type: {self.type}",
+            f"Popularity: {self.popularity}",
+            f"Untameable: {'Yes' if self.is_untameable else 'No'}",
+        ]
+        return ". ".join(parts)
 
     def __hash__(self):
         return hash(self.id)

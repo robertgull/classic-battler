@@ -1,13 +1,12 @@
 import asyncio
-from typing import Optional
+import re
+from typing import Optional, Any, Coroutine
 
 from src.core.pet_type_chart import pet_type_matrix
-from src.repository.mongo_db import MongoDb
 from src.repository.pet_data_handler import PetDataHandler
 from src.repository.interface.database import DbBase
 from src.core.models import BattlePet, PetType, Ability
-from src.core.semantic_search import search
-from src.repository.redis_cache import get_cached, set_cached
+from src.core.semantic_search import SemanticSearch
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
     return [
@@ -17,9 +16,24 @@ def find_types_strong_against(target_type: PetType) -> list[PetType]:
     ]
 
 
+async def is_damage_ability(ability: Ability) -> bool:
+    """Check if an ability is a damaging ability."""
+    if ability.damage and ability.damage.strip().lower() != "0":
+        return True
+    #pattern = r"dealing\s+\d+\s+(" + "|".join([pt.value for pt in PetType]) + r")\s+damage"
+    pattern =         r"\b\d+\s+(" + "|".join([pt.value for pt in PetType]) + r")\s+damage\b"
+
+    desc_damage = re.search(pattern, ability.description, re.IGNORECASE)
+    if desc_damage:
+        print(f"✅✅✅ Description damage found in: {ability.name}")
+        return True
+    return False
+
+
 class PetManager:
     def __init__(self, db: Optional[DbBase] = None) -> None:
         self.db = db or PetDataHandler()
+        self.sem_search = SemanticSearch(db=self.db)
 
     async def list_battle_pets(self) -> list[BattlePet]:
         """List all battle pets in the database."""
@@ -49,6 +63,10 @@ class PetManager:
     async def get_pet(self, _id: int) -> BattlePet:
         """Retrieve a battle pet by its ID."""
         return await self.db.get_battle_pet(_id)
+
+    async def get_ability(self, _id: int) -> Ability:
+        """Retrieve an ability by its ID."""
+        return await self.db.get_ability(_id)
 
     async def find_pets_by_type(self, pet_type: PetType) -> list[BattlePet]:
         """Find all battle pets of a specific type."""
@@ -94,7 +112,7 @@ class PetManager:
         damaging_abilities = []
 
         for ability in abilities:
-            if ability.damage and ability.damage.strip().lower() != "0":
+            if await is_damage_ability(ability):
                 print(f"✅ Included: {ability.name} (damage = {ability.damage})")
                 damaging_abilities.append(ability)
             else:
@@ -136,36 +154,19 @@ class PetManager:
     async def sem_search_abilities(
         self, query: str, k: int = 5
     ) -> list[Ability]:
-        search(query, k=k)
-        pass
+        ids, weights = self.sem_search.search_ability(query, k=k)
+        ids = list(map(int, ids))
+        return await self.db.get_abilities_by_ids(ids)
 
 
 
 # test
 async def main():
     manager = PetManager()
-    double_tap_type = PetType.UNDEAD  # Example type for double-tapping
-
-    list_pets_strong_against = await manager.list_pets_strong_against(double_tap_type)
-    print(
-        f"Pets strong against {double_tap_type}: {[pet.name for pet in list_pets_strong_against]}"
-    )
-    list_pets_defensive_against = await manager.list_pets_defensive_against(
-        double_tap_type
-    )
-    print(
-        f"Pets defensive against {double_tap_type}: {[pet.name for pet in list_pets_defensive_against]}"
-    )
-    combined_list = list(
-        set(list_pets_strong_against) & set(list_pets_defensive_against)
-    )
-    print(
-        f"Combined list of pets strong against {double_tap_type} and defensive against {double_tap_type}: {[pet for pet in combined_list]}"
-    )
-    print(
-        f"Combined list of pets strong against {double_tap_type} and defensive against {double_tap_type}: {[f'{pet.name} from {pet.source}' for pet in combined_list]}"
-    )
-
+    await manager.sem_search.set_embeddings()
+    ability_query = "causes burning"
+    response = await manager.sem_search_abilities(ability_query)
+    print(response)
 
 if __name__ == "__main__":
     asyncio.run(main())

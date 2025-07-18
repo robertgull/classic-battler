@@ -1,4 +1,4 @@
-.PHONY: run get check format test  mongodb redis
+.PHONY: run get check format test  mongodb cache cache
 
 
 
@@ -10,7 +10,7 @@ mongodb:
 	podman machine start
 	podman start petdb
 
-redis:
+cache:
 	@powershell -Command \
 		"if ((podman ps -a --format '{{.Names}}' | Select-String '^redis$$')) { \
 			Write-Host 'Redis container already exists, starting it...'; \
@@ -20,7 +20,12 @@ redis:
 			podman run --name redis -p 6379:6379 -d redis; \
 		}"
 
+clear-cache:
+	podman exec -it redis redis-cli FLUSHDB
+
 run:
+	$(MAKE) cache
+	$(MAKE) clear-cache
 	@powershell -Command "if (-not (podman ps --format '{{.Names}}' | Select-String -Pattern '^petdb$$')) { Write-Host 'petdb not running, starting it...'; make mongodb } else { Write-Host 'petdb is already running.' }"
 	uvicorn src.app.main:app --reload --log-level debug
 
