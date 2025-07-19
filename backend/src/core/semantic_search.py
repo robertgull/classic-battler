@@ -24,15 +24,14 @@ class SemanticSearch:
         all_battle_pets = await self.db.get_all_battle_pets()
         battle_pets_texts = [str(pet) for pet in all_battle_pets]
         self.battle_pet_embeddings = self.model.encode(battle_pets_texts)
-        #self.battle_pet_embeddings = normalize(self.battle_pet_embeddings)
+        self.battle_pet_embeddings = normalize(self.battle_pet_embeddings)
         self.battle_pet_index = faiss.IndexFlatIP(self.battle_pet_embeddings.shape[1])
         self.battle_pet_index.add(self.battle_pet_embeddings)
 
         all_abilities = await self.db.get_all_abilities()
         ability_texts = [str(ability) for ability in all_abilities]
-        #self.ability_embeddings = self.model.encode(ability_texts, convert_to_numpy=True).astype(np.float32)
         self.ability_embeddings = self.model.encode(ability_texts)
-        #self.ability_embeddings = normalize(self.ability_embeddings)
+        self.ability_embeddings = normalize(self.ability_embeddings)
         self.ability_index = faiss.IndexFlatIP(self.ability_embeddings.shape[1])
         self.ability_index.add(self.ability_embeddings)
 
@@ -45,9 +44,9 @@ class SemanticSearch:
 
     def search_ability(self, search_query: str, k=5):
         """Search for the top k most similar documents to the query."""
-        query_vector = self.model.encode([search_query])
+        query_vector = normalize(self.model.encode([search_query]))
         D, I = self.ability_index.search(query_vector, k)
-        return I[0], D[0]  # Return indices and distances
+        return I[0], D[0]
 
 
 # Load sentence transformer model

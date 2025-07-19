@@ -39,6 +39,10 @@ class PetManager:
         """List all battle pets in the database."""
         return await self.db.get_all_battle_pets()
 
+    async def list_abilities(self) -> list[Ability]:
+        """List all abilities in the database."""
+        return await self.db.get_all_abilities()
+
     async def find_pets_with_ability_type(
         self, ability_type: PetType
     ) -> list[BattlePet]:
@@ -163,8 +167,9 @@ class PetManager:
 # test
 async def main():
     manager = PetManager()
+    print(await manager.list_abilities())
     await manager.sem_search.set_embeddings()
-    ability_query = "causes burning"
+    ability_query = "causes target to count as burning"
     response = await manager.sem_search_abilities(ability_query)
     print(response)
 
