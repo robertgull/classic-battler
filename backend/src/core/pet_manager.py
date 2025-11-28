@@ -169,7 +169,7 @@ async def main():
     manager = PetManager()
     print(await manager.list_abilities())
     await manager.sem_search.set_embeddings()
-    ability_query = "causes target to count as burning"
+    ability_query = "causes target to count as Burning"
     response = await manager.sem_search_abilities(ability_query)
     print(response)
 

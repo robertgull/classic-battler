@@ -7,17 +7,16 @@ from pymongo import MongoClient  # Used for creating indexes
 from src.core.models import BattlePet, PetType, Ability
 from src.repository.interface.database import DbBase
 
-
 class MongoDb(DbBase):
     def __init__(self):
         # Ensure indexes synchronously with PyMongo
-        pymongo_client = MongoClient("mongodb://localhost:3000/petdb")
+        pymongo_client = MongoClient("mongodb://localhost:27018/petdb")
         pm_db = pymongo_client.get_default_database()
         pm_db.abilities.create_index("id", unique=True)
         pm_db.battle_pets.create_index("id", unique=True)
 
         client = AsyncIOMotorClient(
-            "mongodb://localhost:3000/petdb",
+            "mongodb://localhost:27018/petdb",
             uuidrepresentation="standard",
         )
         self.db = client.get_default_database()
