@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from fastapi import FastAPI, APIRouter, HTTPException, Query, Depends, status, Body
 from src.core.pet_manager import PetManager
 from src.core.user_manager import UserManager
@@ -5,6 +7,9 @@ from src.core.models import BattlePet, PetType, Ability
 from src.core.user_model import UserCreateNative, User, UserOut
 from fastapi.middleware.cors import CORSMiddleware
 import httpx
+import os
+from dotenv import load_dotenv
+
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
 from datetime import datetime, timedelta
@@ -14,47 +19,61 @@ from jose import JWTError, jwt
 from pydantic import BaseModel
 
 # google auth
-GOOGLE_CLIENT_ID = ""
-GOOGLE_CLIENT_SECRET = ""
+ENV_PATH = Path(__file__).resolve().parents[2] / ".env"  # -> backend/.env
+load_dotenv(dotenv_path=ENV_PATH)
+
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+print("GOOGLE_CLIENT_ID" + GOOGLE_CLIENT_ID)
 # Innate auth
-SECRET_KEY = ""
+SECRET_KEY = "super-secret-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 1000
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # Discord auth
-DISCORD_CLIENT_ID = ""
-DISCORD_CLIENT_SECRET = ""
+DISCORD_CLIENT_ID = "1439358085104664737"
+
 DISCORD_REDIRECT_URI = "http://localhost:5173/discord-callback"
 DISCORD_TOKEN_URL = "https://discord.com/api/v10/oauth2/token"
 DISCORD_USER_URL = "https://discord.com/api/v10/users/@me"
+
 
 # https://discord.com/oauth2/authorize?client_id=1439358085104664737&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fdiscord-callback&scope=identify+email
 class DiscordCodePayload(BaseModel):
     code: str
 
+
+class DiscordAccessTokenPayload(BaseModel):
+    access_token: str
+
+
 class AddPetRequest(BaseModel):
     pet_id: int
 
-class UserInDB(BaseModel):#  TODO: REMOVE
+
+class UserInDB(BaseModel):  #  TODO: REMOVE
     email: str
     hashed_password: str
 
 
-fake_users_db = { #  TODO: REMOVE
+fake_users_db = {  #  TODO: REMOVE
     "testuser": UserInDB(
         email="testuser",
         hashed_password="fakehashedpassword",
     )
 }
 
+
 ##################### INNATE AUTH ##################### not OAuth2, but maybe OK. TODO: REMOVE
 def secure_hash(password: str) -> str:
     return "fakehashed" + password
+
 
 def get_user(db, username: str) -> UserInDB | None:
     if username in db:
         return db[username]
     return None
+
 
 def authenticate_user(username: str, password: str) -> UserInDB | None:
     user = get_user(fake_users_db, username)
@@ -65,14 +84,13 @@ def authenticate_user(username: str, password: str) -> UserInDB | None:
     return None
 
 
-
-
 def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     to_encode = data.copy()
     expire = datetime.utcnow() + (expires_delta or timedelta(minutes=150))
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
+
 
 ##################### GOOGLE AUTH #####################
 def get_or_create_google_user(email: str) -> UserInDB:
@@ -130,6 +148,32 @@ class BattlerApp:
         async def get_battle_pet_by_id(_id: int) -> BattlePet:
             return await self.manager.get_pet(_id)
 
+
+        from typing import Annotated
+
+
+
+        @self.router.get("/abilities/search/wuzzy", response_model=list[Ability])
+        async def search_abilities_wuzzy(
+            q: Annotated[str, Query(min_length=1, description="Search text")]
+        ) -> list[Ability]:
+            results = await self.manager.fuzzy_search_abilities(q)
+            if not results:
+                return []
+            print(len(results))
+            return results
+
+        @self.router.get("/abilities/search/rapid", response_model=list[Ability])
+        async def search_abilities_rapid(
+            q: Annotated[str, Query(min_length=1, description="Search text")]
+        ) -> list[Ability]:
+            results = await self.manager.fuzzy_search_abilities_rapid(q)
+            if not results:
+                return []
+            print(len(results))
+            return results
+
+
         @self.router.get(
             "/users/me",
             response_model=UserOut,
@@ -177,32 +221,44 @@ class BattlerApp:
         async def get_ability_by_id(_id: int) -> Ability:
             return await self.manager.get_ability(_id)
 
-        @self.router.post("/users", response_model=User, status_code=status.HTTP_201_CREATED)
+        @self.router.post(
+            "/users", response_model=User, status_code=status.HTTP_201_CREATED
+        )
         async def create_user(payload: UserCreateNative):
             existing = await self.user_manager.get_user(payload.email)
             if existing:
                 raise HTTPException(status_code=400, detail="User already exists")
             user = await self.user_manager.add_user_via_password(payload)
-            return user # TODO: Don't return the entire user
+            return user  # TODO: Don't return the entire user
 
-        @self.app.post("/token") ##################### INNATE AUTH #####################
+        @self.app.post(
+            "/token"
+        )  ##################### INNATE AUTH #####################
         async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-            user = await self.user_manager.verify_user(form_data.username, form_data.password)
+            user = await self.user_manager.verify_user(
+                form_data.username, form_data.password
+            )
             if not user:
                 raise HTTPException(
                     status_code=status.HTTP_401_UNAUTHORIZED,
                     detail="Incorrect username or password",
                     headers={"WWW-Authenticate": "Bearer"},
                 )
-            access_token = create_access_token(
-                data={"sub": user.email}
-            )
-            return {"access_token": access_token, "token_type": "bearer", "email": user.email}
+            access_token = create_access_token(data={"sub": user.email})
+            return {
+                "access_token": access_token,
+                "token_type": "bearer",
+                "email": user.email,
+            }
 
         self.app.include_router(self.router)
 
-        @self.app.post("/auth/google") ##################### GOOGLE AUTH ##################### TODO: FIX
-        async def google_login(token: str = Body(..., embed=True)): # counts as OpenID Connect
+        @self.app.post(
+            "/auth/google"
+        )  ##################### GOOGLE AUTH ##################### TODO: FIX
+        async def google_login(
+            token: str = Body(..., embed=True),
+        ):  # counts as OpenID Connect
             try:
                 idinfo = id_token.verify_oauth2_token(
                     token,
@@ -236,43 +292,81 @@ class BattlerApp:
                 data={"sub": user.email},
                 expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
             )
-            print(f"Returning: access_token: {access_token}, token_type: bearer, username: {email}")
-            return {"access_token": access_token, "token_type": "bearer", "username": email}
-
-        @self.app.post("/auth/discord/exchange") ##################### DISCORD AUTH #####################
-        async def discord_exchange(payload: DiscordCodePayload): # gets code
-            data: dict = {
-                "client_id": DISCORD_CLIENT_ID,
-                "client_secret": DISCORD_CLIENT_SECRET,
-                "grant_type": "authorization_code",
-                "code": payload.code,
-                "redirect_uri": DISCORD_REDIRECT_URI,
+            print(
+                f"Returning: access_token: {access_token}, token_type: bearer, username: {email}"
+            )
+            return {
+                "access_token": access_token,
+                "token_type": "bearer",
+                "username": email,
             }
 
+        # @self.app.post("/auth/discord/exchange") ##################### DISCORD AUTH #####################
+        # async def discord_exchange(payload: DiscordCodePayload): # gets code
+        #     data: dict = {
+        #         "client_id": DISCORD_CLIENT_ID,
+        #         "client_secret": DISCORD_CLIENT_SECRET,
+        #         "grant_type": "authorization_code",
+        #         "code": payload.code,
+        #         "redirect_uri": DISCORD_REDIRECT_URI,
+        #     }
+        #
+        #     async with httpx.AsyncClient() as client:
+        #         token_res = await client.post( # get access_token from discord
+        #             DISCORD_TOKEN_URL,
+        #             data=data,
+        #             headers={"Content-Type": "application/x-www-form-urlencoded"},
+        #         )
+        #
+        #         if token_res.status_code != 200:
+        #             raise HTTPException(
+        #                 status_code=status.HTTP_401_UNAUTHORIZED,
+        #                 detail=f"Discord token exchange failed: {token_res.text}",
+        #             )
+        #
+        #         token_data = token_res.json()
+        #         access_token = token_data.get("access_token")
+        #         if not access_token:
+        #             raise HTTPException(
+        #                 status_code=status.HTTP_401_UNAUTHORIZED,
+        #                 detail="No access token from Discord",
+        #             )
+        #
+        #         user_res = await client.get( # use access token to get bearer
+        #             DISCORD_USER_URL,
+        #             headers={"Authorization": f"Bearer {access_token}"},
+        #         )
+        #
+        #         if user_res.status_code != 200:
+        #             raise HTTPException(
+        #                 status_code=status.HTTP_401_UNAUTHORIZED,
+        #                 detail=f"Discord user fetch failed: {user_res.text}",
+        #             )
+        #
+        #         discord_user = user_res.json() # discord_user contains id, username, discriminator, avatar, email (if scope=email)
+        #
+        #         email = discord_user.get("email")
+        #         username = email or f"discord:{discord_user['id']}" # emai l missing but so use discord id
+        #         print(f"discord_user: {discord_user}, email: {email}, username: {username}")
+        #         user = await self.user_manager.get_or_create_oauth_user(email, discord=True)
+        #
+        #         access_token = create_access_token( #JWT
+        #             data={"sub": user.email}
+        #         )
+        #         return { # token back to frontend for protected functions
+        #             "access_token": access_token,
+        #             "token_type": "bearer",
+        #             "username": user.email
+        #         }
+
+        @self.app.post("/auth/discord")
+        async def discord_auth(payload: DiscordAccessTokenPayload):
+            discord_access_token = payload.access_token
+
             async with httpx.AsyncClient() as client:
-                token_res = await client.post( # get access_token from discord
-                    DISCORD_TOKEN_URL,
-                    data=data,
-                    headers={"Content-Type": "application/x-www-form-urlencoded"},
-                )
-
-                if token_res.status_code != 200:
-                    raise HTTPException(
-                        status_code=status.HTTP_401_UNAUTHORIZED,
-                        detail=f"Discord token exchange failed: {token_res.text}",
-                    )
-
-                token_data = token_res.json()
-                access_token = token_data.get("access_token")
-                if not access_token:
-                    raise HTTPException(
-                        status_code=status.HTTP_401_UNAUTHORIZED,
-                        detail="No access token from Discord",
-                    )
-
-                user_res = await client.get( # use access token to get bearer
-                    DISCORD_USER_URL,
-                    headers={"Authorization": f"Bearer {access_token}"},
+                user_res = await client.get(
+                    DISCORD_USER_URL,  # "https://discord.com/api/v10/users/@me"
+                    headers={"Authorization": f"Bearer {discord_access_token}"},
                 )
 
                 if user_res.status_code != 200:
@@ -281,18 +375,23 @@ class BattlerApp:
                         detail=f"Discord user fetch failed: {user_res.text}",
                     )
 
-                discord_user = user_res.json() # discord_user contains id, username, discriminator, avatar, email (if scope=email)
-
+                discord_user = user_res.json()
                 email = discord_user.get("email")
-                username = email or f"discord:{discord_user['id']}" # emai l missing but so use discord id
-                print(f"discord_user: {discord_user}, email: {email}, username: {username}")
-                user = await self.user_manager.get_or_create_oauth_user(email, discord=True)
+                username = email or f"discord:{discord_user['id']}"
 
-                access_token = create_access_token( #JWT
-                    data={"sub": user.email}
+                user = await self.user_manager.get_or_create_oauth_user(
+                    email, discord=True
                 )
-                return { # token back to frontend for protected functions
-                    "access_token": access_token,
+                print(
+                    f"discord_user: {discord_user}, email: {email}, username: {username}"
+                )
+                jwt_access_token = create_access_token(  # for FE to use endpoints
+                    data={"sub": user.email},
+                )
+
+                return {
+                    "access_token": jwt_access_token,
                     "token_type": "bearer",
-                    "username": user.email
+                    "username": user.email,
                 }
+

@@ -39,6 +39,15 @@ class Ability(BaseModel):
         ]
         return ". ".join(parts)
 
+    @property
+    def fuzz_search_data(self):
+        parts = [
+            f"{self.name} ({self.id})",
+            f"Type: {self.type}",
+            f"Description: {self.description}",
+        ]
+        return ". ".join(parts)
+
     id: int = Field(..., description="Unique identifier for the ability")
     name: str = Field(..., description="Name of the ability")
     damage: str = Field(..., description="Damage dealt by the ability")

@@ -9,45 +9,44 @@ const petTypes = [
 const DISCORD_CLIENT_ID = "1439358085104664737";
 const DISCORD_REDIRECT_URI = "http://localhost:5173/discord-callback";
 const DISCORD_SCOPE = "identify email";
+const DISCORD_TOKEN_URL = "https://discord.com/api/oauth2/token";
 const DISCORD_OAUTH_URL =
     "https://discord.com/oauth2/authorize?client_id=1439358085104664737&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fdiscord-callback&scope=identify+email";
 
+// =================================================== PKCE helpers ====================================================
 
-//
-// declare global {
-//     interface Window {
-//         google?: any;
-//     }
-// }
+function generateRandomString(length = 43): string {
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
+    const randomValues = new Uint8Array(length);
+    window.crypto.getRandomValues(randomValues);
+    return Array.from(randomValues, v => charset[v % charset.length]).join("");
+}
 
-// const [collectionMessage, setCollectionMessage] = useState<string | null>(null);
+function base64UrlEncode(buffer: ArrayBuffer): string {
+    const bytes = new Uint8Array(buffer);
+    let binary = "";
+    for (let i = 0; i < bytes.byteLength; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary)
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+}
 
-// async function addPetToCollection(petId: number) {
-//     if (!token) {
-//         setCollectionMessage("You must be logged in to add pets.");
-//         return;
-//     }
-//
-//     setCollectionMessage(null);
-//     try {
-//         const res = await fetch("http://127.0.0.1:8000/users/me/collection", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${token}`,
-//             },
-//             body: JSON.stringify({ pet_id: petId }),
-//         });
-//
-//         if (!res.ok) {
-//             throw new Error(`Failed to add pet (status ${res.status})`);
-//         }
-//
-//         setCollectionMessage(`Pet ${petId} added to your collection!`);
-//     } catch (err: any) {
-//         setCollectionMessage(err.message || "Failed to add pet to collection.");
-//     }
-// }
+async function sha256(message: string): Promise<ArrayBuffer> {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+    return crypto.subtle.digest("SHA-256", data);
+}
+
+async function createPkcePair(): Promise<{ verifier: string; challenge: string }> {
+    const verifier = generateRandomString(64); // 43–128 chars "secret"
+    const hash = await sha256(verifier);
+    const challenge = base64UrlEncode(hash);
+    return { verifier, challenge };
+}
+
 
 
 function App() {
@@ -56,7 +55,7 @@ function App() {
     const [password, setPassword] = useState("");
     const [token, setToken] = useState<string | null>(null);
     const [authError, setAuthError] = useState("");
-    // visual q for user if logged in
+    // visual for user if logged in
     const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
 
     // just state
@@ -71,7 +70,39 @@ function App() {
     const [collectionMessage, setCollectionMessage] = useState<string | null>(null);
     const [currentUser, setCurrentUser] = useState<any | null>(null);
 
+    // serach bar
+    const [abilityQuery, setAbilityQuery] = useState("");
+    const [abilityResults, setAbilityResults] = useState<any[]>([]);
 
+
+    // ============================================== DISCORD PKCE =====================================================
+    async function startDiscordLogin() {
+        try {
+            const { verifier, challenge } = await createPkcePair(); // 2. “generate code_verifier and from this a code_challenge.”
+            const state = generateRandomString(32);
+
+            sessionStorage.setItem("discord_pkce_verifier", verifier);
+            sessionStorage.setItem("discord_oauth_state", state);
+
+            const params = new URLSearchParams({ // https://discord.com/oauth2/authorize?
+                client_id: DISCORD_CLIENT_ID,  // client_id=1439358085104664737
+                response_type: "code", // response_type=code
+                redirect_uri: DISCORD_REDIRECT_URI, // redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fdiscord-callback
+                scope: DISCORD_SCOPE, // &scope=identify+email
+                state, // state=Q4NNTNez.4WP5a-4uEP8YT6w5%7EnbURpr extra protection
+                code_challenge: challenge, // code_challenge=op1f-En4v35xZOQbHu1p6G_pjxZpjN643KZginHa64c
+                code_challenge_method: "S256", // code_challenge_method=S256
+            });
+
+            window.location.href = `https://discord.com/oauth2/authorize?${params.toString()}`; // 3. “Authorize Code Request + Code challenge to /authorize.”
+        } catch (e) {                                                                                                   // 4. 5. User is redirected and Authenticates
+            console.error(e);
+            setAuthError("Failed to start Discord login");
+        }
+    }
+
+
+    // ============================================== DISCORD PKCE =====================================================
     // function getDiscordAuthUrl() {
     //     const params = new URLSearchParams({
     //         client_id: DISCORD_CLIENT_ID,
@@ -203,36 +234,95 @@ function App() {
         };
     }, []);
 
-    useEffect(() => { // Discord exchange
+    useEffect(() => {
         const url = new URL(window.location.href);
-        const code = url.searchParams.get("code");
+        const code = url.searchParams.get("code"); // 6. “Auth server stores code_challenge and redirects back with an authorization code.”
+        const state = url.searchParams.get("state");         //part of callback
         const path = url.pathname;
 
         if (path === "/discord-callback" && code) {
+            const storedVerifier = sessionStorage.getItem("discord_pkce_verifier");
+            const storedState = sessionStorage.getItem("discord_oauth_state");
+
+            if (!storedVerifier || !storedState || state !== storedState) { // check state extra protection
+                  setAuthError("Discord login failed: invalid state or PKCE verifier");
+                sessionStorage.removeItem("discord_pkce_verifier");
+                sessionStorage.removeItem("discord_oauth_state");
+                window.history.replaceState({}, "", "/");
+                return;
+            }
+
             (async () => {
                 try {
-                    const res = await fetch("http://127.0.0.1:8000/auth/discord/exchange", { //send code to backend
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ code }),
+                    // FE -> Discord: exchange code for Discord access token
+                    const body = new URLSearchParams({
+                        client_id: DISCORD_CLIENT_ID,
+                        grant_type: "authorization_code",
+                        code,
+                        redirect_uri: DISCORD_REDIRECT_URI,
+                        code_verifier: storedVerifier,
                     });
 
-                    if (!res.ok) {
-                        throw new Error(`Discord login failed (${res.status})`);
-                    }
+                    const tokenRes = await fetch(DISCORD_TOKEN_URL, { // 7. “Send Auth code + code_verifier to /oauth/token.” ->
+                        method: "POST",                                                                                                                    // (Discord) 8. Validate Code Verifier and Challenge
+                        headers: {                                               // 9. “get back ID Token and Access token”
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: body.toString(),
+                    });
 
-                    const data = await res.json();
-                    setToken(data.access_token); // save the token, our "login"
+
+                    const tokenJson = await tokenRes.json();
+                    const discordAccessToken = tokenJson.access_token as string | undefined;
+
+
+                    // send token to backend
+                    const backendRes = await fetch( //10. Send token to backend to request user data
+                        "http://127.0.0.1:8000/auth/discord",
+                        {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ access_token: discordAccessToken }),
+                        },
+                    );
+
+
+                    const data = await backendRes.json();
+                    setToken(data.access_token); // JWT
                     setLoggedInUser(data.username);
                     setAuthError("");
-
-                    window.history.replaceState({}, "", "/"); // wipe url
                 } catch (e: any) {
+                    console.error(e);
                     setAuthError(e.message || "Discord login failed");
+                } finally {
+                    sessionStorage.removeItem("discord_pkce_verifier");
+                    sessionStorage.removeItem("discord_oauth_state");
+                    window.history.replaceState({}, "", "/");
                 }
             })();
         }
     }, []);
+
+    useEffect(() => {
+        const q = abilityQuery.trim();
+        if (!q) {
+            setAbilityResults([]);
+            return;
+        }
+
+        const timeout = setTimeout(async () => {
+            const res = await fetch(
+                `http://127.0.0.1:8000/abilities/search/rapid?q=${encodeURIComponent(q)}`
+            );
+            const data = await res.json();
+            setAbilityResults(data);
+        }, 250);
+
+        return () => clearTimeout(timeout);
+    }, [abilityQuery]);
+
+
+
     async function fetchCurrentUser() {
         if (!token) return;
 
@@ -380,7 +470,7 @@ function App() {
                     <button
                         type="button"
                         onClick={() => {
-                            window.location.href = DISCORD_OAUTH_URL;
+                            startDiscordLogin(); // 1. “Click login link.”
                         }}
                     >
                         Login with Discord
@@ -426,6 +516,30 @@ function App() {
                     <pre>{JSON.stringify(currentUser, null, 2)}</pre>
                 </div>
             )}
+
+            <hr style={{ margin: "32px 0" }} />
+
+
+            {/* Ability Fuzzy Search */}
+            <hr />
+
+            <h3>Ability Search</h3>
+
+            <input
+                type="text"
+                value={abilityQuery}
+                onChange={(e) => setAbilityQuery(e.target.value)}
+                style={{ width: 300 }}
+            />
+
+            <ul>
+                {abilityResults.map((a) => (
+                    <li key={a.id}>
+                        <strong>{a.name}</strong> ({a.type})
+                        {a.description}
+                    </li>
+                ))}
+            </ul>
 
             <hr style={{ margin: "32px 0" }} />
 

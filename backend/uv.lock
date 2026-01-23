@@ -243,6 +243,7 @@ dependencies = [
     { name = "bs4" },
     { name = "faiss-cpu" },
     { name = "fastapi" },
+    { name = "fuzzywuzzy" },
     { name = "google-auth" },
     { name = "langextract" },
     { name = "motor" },
@@ -251,6 +252,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyright" },
     { name = "python-jose", extra = ["cryptography"] },
+    { name = "python-levenshtein" },
     { name = "python-multipart" },
     { name = "redis" },
     { name = "sentence-transformers" },
@@ -268,6 +270,7 @@ requires-dist = [
     { name = "bs4", specifier = ">=0.0.2" },
     { name = "faiss-cpu", specifier = ">=1.11.0" },
     { name = "fastapi", specifier = ">=0.115.14" },
+    { name = "fuzzywuzzy", specifier = ">=0.18.0" },
     { name = "google-auth", specifier = ">=2.40.3" },
     { name = "langextract", specifier = ">=1.0.8" },
     { name = "motor", specifier = ">=3.7.1" },
@@ -276,6 +279,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.11.7" },
     { name = "pyright", specifier = ">=1.1.402" },
     { name = "python-jose", extras = ["cryptography"], specifier = ">=3.5.0" },
+    { name = "python-levenshtein", specifier = ">=0.27.3" },
     { name = "python-multipart", specifier = ">=0.0.20" },
     { name = "redis", specifier = ">=6.2.0" },
     { name = "sentence-transformers", specifier = ">=5.0.0" },
@@ -455,6 +459,15 @@ wheels = [
 ]
 
 [[package]]
+name = "fuzzywuzzy"
+version = "0.18.0"
+source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
+sdist = { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/11/4b/0a002eea91be6048a2b5d53c5f1b4dafd57ba2e36eea961d05086d7c28ce/fuzzywuzzy-0.18.0.tar.gz", hash = "sha256:45016e92264780e58972dca1b3d939ac864b78437422beecebb3095f8efd00e8" }
+wheels = [
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/43/ff/74f23998ad2f93b945c0309f825be92e04e0348e062026998b5eefef4c33/fuzzywuzzy-0.18.0-py2.py3-none-any.whl", hash = "sha256:928244b28db720d1e0ee7587acf660ea49d7e4c632569cad4f1cd7e68a5f0993" },
+]
+
+[[package]]
 name = "google-auth"
 version = "2.40.3"
 source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
@@ -629,6 +642,28 @@ dependencies = [
 sdist = { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/2e/d8/95666e87f02f3c83420ed030f14085c9c6acd986da336b514443dee6d649/langextract-1.0.8.tar.gz", hash = "sha256:dc4c65058969486faf119d2c0cd82a12ccdff1d9785212b96fd67c52cbbe74c7" }
 wheels = [
     { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/f7/70/f5eba44ee7a8c8fe651b14585618a4ca600dd41a6fdc156b4377f4f53bb1/langextract-1.0.8-py3-none-any.whl", hash = "sha256:17b5985154ec1d58f5dd8fe4d6135d0cd4b4d650a075f8cf36eca705e2459263" },
+]
+
+[[package]]
+name = "levenshtein"
+version = "0.27.3"
+source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
+dependencies = [
+    { name = "rapidfuzz" },
+]
+sdist = { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/82/56/dcf68853b062e3b94bdc3d011cc4198779abc5b9dc134146a062920ce2e2/levenshtein-0.27.3.tar.gz", hash = "sha256:1ac326b2c84215795163d8a5af471188918b8797b4953ec87aaba22c9c1f9fc0" }
+wheels = [
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/7c/8e/3be9d8e0245704e3af5258fb6cb157c3d59902e1351e95edf6ed8a8c0434/levenshtein-0.27.3-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:2de7f095b0ca8e44de9de986ccba661cd0dec3511c751b499e76b60da46805e9" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/a6/42/a2b2fda5e8caf6ecd5aac142f946a77574a3961e65da62c12fd7e48e5cb1/levenshtein-0.27.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:d9b8b29e5d5145a3c958664c85151b1bb4b26e4ca764380b947e6a96a321217c" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/eb/c4/f083fabbd61c449752df1746533538f4a8629e8811931b52f66e6c4290ad/levenshtein-0.27.3-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:fc975465a51b1c5889eadee1a583b81fba46372b4b22df28973e49e8ddb8f54a" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/4e/e5/b6421e04cb0629615b8efd6d4d167dd2b1afb5097b87bb83cd992004dcca/levenshtein-0.27.3-cp312-cp312-manylinux_2_24_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:57573ed885118554770979fdee584071b66103f6d50beddeabb54607a1213d81" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/e5/77/39ee0e8d3028e90178e1031530ccc98563f8f2f0d905ec784669dcf0fa90/levenshtein-0.27.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:23aff800a6dd5d91bb3754a6092085aa7ad46b28e497682c155c74f681cfaa2d" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/3c/0d/c0f367bbd260dbd7a4e134fd21f459e0f5eac43deac507952b46a1d8a93a/levenshtein-0.27.3-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:c08a952432b8ad9dccb145f812176db94c52cda732311ddc08d29fd3bf185b0a" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/d8/ef/ae71433f7b4db0bd2af7974785e36cdec899919203fb82e647c5a6109c07/levenshtein-0.27.3-cp312-cp312-musllinux_1_2_armv7l.whl", hash = "sha256:3bfcb2d78ab9cc06a1e75da8fcfb7a430fe513d66cfe54c07e50f32805e5e6db" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/27/dc/62c28b812dcb0953fc32ab7adf3d0e814e43c8560bb28d9269a44d874adf/levenshtein-0.27.3-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:ba7235f6dcb31a217247468295e2dd4c6c1d3ac81629dc5d355d93e1a5f4c185" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/56/e8/2e7ab9c565793220edb8e5432f9a846386a157075bdd032a90e9585bce38/levenshtein-0.27.3-cp312-cp312-win32.whl", hash = "sha256:ea80d70f1d18c161a209be556b9094968627cbaae620e102459ef9c320a98cbb" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/2c/a6/907a1fc8587dc91c40156973e09d106ab064c06eb28dc4700ba0fe54d654/levenshtein-0.27.3-cp312-cp312-win_amd64.whl", hash = "sha256:fbaa1219d9b2d955339a37e684256a861e9274a3fe3a6ee1b8ea8724c3231ed9" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/d5/d6/e04f0ddf6a71df3cdd1817b71703490ac874601ed460b2af172d3752c321/levenshtein-0.27.3-cp312-cp312-win_arm64.whl", hash = "sha256:2edbaa84f887ea1d9d8e4440af3fdda44769a7855d581c6248d7ee51518402a8" },
 ]
 
 [[package]]
@@ -1138,6 +1173,18 @@ cryptography = [
 ]
 
 [[package]]
+name = "python-levenshtein"
+version = "0.27.3"
+source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
+dependencies = [
+    { name = "levenshtein" },
+]
+sdist = { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/f6/b4/36eda4188dd19d3cb53d8a8749d7520bd23dfe1c1f44e56ea9dcd0232274/python_levenshtein-0.27.3.tar.gz", hash = "sha256:27dc2d65aeb62a7d6852388f197073296370779286c0860b087357f3b8129a62" }
+wheels = [
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/7b/5b/26e3cca2589252ceabf964ba81514e6f48556553c9c2766e1a0fdceec696/python_levenshtein-0.27.3-py3-none-any.whl", hash = "sha256:5d6168a8e8befb25abf04d2952368a446722be10e8ced218d0dc4fd3703a43a1" },
+]
+
+[[package]]
 name = "python-multipart"
 version = "0.0.20"
 source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
@@ -1170,6 +1217,25 @@ wheels = [
     { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/c9/1f/4f998c900485e5c0ef43838363ba4a9723ac0ad73a9dc42068b12aaba4e4/PyYAML-6.0.2-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:8b9c7197f7cb2738065c481a0461e50ad02f18c78cd75775628afb4d7137fb3b" },
     { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/df/d1/f5a275fdb252768b7a11ec63585bc38d0e87c9e05668a139fea92b80634c/PyYAML-6.0.2-cp312-cp312-win32.whl", hash = "sha256:ef6107725bd54b262d6dedcc2af448a266975032bc85ef0172c5f059da6325b4" },
     { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/0c/e8/4f648c598b17c3d06e8753d7d13d57542b30d56e6c2dedf9c331ae56312e/PyYAML-6.0.2-cp312-cp312-win_amd64.whl", hash = "sha256:7e7401d0de89a9a855c839bc697c079a4af81cf878373abd7dc625847d25cbd8" },
+]
+
+[[package]]
+name = "rapidfuzz"
+version = "3.14.3"
+source = { registry = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/simple" }
+sdist = { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/d3/28/9d808fe62375b9aab5ba92fa9b29371297b067c2790b2d7cda648b1e2f8d/rapidfuzz-3.14.3.tar.gz", hash = "sha256:2491937177868bc4b1e469087601d53f925e8d270ccc21e07404b4b5814b7b5f" }
+wheels = [
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/fa/8e/3c215e860b458cfbedb3ed73bc72e98eb7e0ed72f6b48099604a7a3260c2/rapidfuzz-3.14.3-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:685c93ea961d135893b5984a5a9851637d23767feabe414ec974f43babbd8226" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/36/d9/31b33512015c899f4a6e6af64df8dfe8acddf4c8b40a4b3e0e6e1bcd00e5/rapidfuzz-3.14.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:fa7c8f26f009f8c673fbfb443792f0cf8cf50c4e18121ff1e285b5e08a94fbdb" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/a9/67/2ee6f8de6e2081ccd560a571d9c9063184fe467f484a17fa90311a7f4a2e/rapidfuzz-3.14.3-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:57f878330c8d361b2ce76cebb8e3e1dc827293b6abf404e67d53260d27b5d941" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/30/83/80d22997acd928eda7deadc19ccd15883904622396d6571e935993e0453a/rapidfuzz-3.14.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:6c5f545f454871e6af05753a0172849c82feaf0f521c5ca62ba09e1b382d6382" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/5b/cf/9f49831085a16384695f9fb096b99662f589e30b89b4a589a1ebc1a19d34/rapidfuzz-3.14.3-cp312-cp312-manylinux_2_31_armv7l.whl", hash = "sha256:07aa0b5d8863e3151e05026a28e0d924accf0a7a3b605da978f0359bb804df43" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/c8/0f/41ee8034e744b871c2e071ef0d360686f5ccfe5659f4fd96c3ec406b3c8b/rapidfuzz-3.14.3-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:73b07566bc7e010e7b5bd490fb04bb312e820970180df6b5655e9e6224c137db" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/da/86/280038b6b0c2ccec54fb957c732ad6b41cc1fd03b288d76545b9cf98343f/rapidfuzz-3.14.3-cp312-cp312-musllinux_1_2_armv7l.whl", hash = "sha256:6de00eb84c71476af7d3110cf25d8fe7c792d7f5fa86764ef0b4ca97e78ca3ed" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/fa/7b/05c26f939607dca0006505e3216248ae2de631e39ef94dd63dbbf0860021/rapidfuzz-3.14.3-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:d7843a1abf0091773a530636fdd2a49a41bcae22f9910b86b4f903e76ddc82dc" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/40/eb/9e3af4103d91788f81111af1b54a28de347cdbed8eaa6c91d5e98a889aab/rapidfuzz-3.14.3-cp312-cp312-win32.whl", hash = "sha256:dea97ac3ca18cd3ba8f3d04b5c1fe4aa60e58e8d9b7793d3bd595fdb04128d7a" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/b8/63/d06ecce90e2cf1747e29aeab9f823d21e5877a4c51b79720b2d3be7848f8/rapidfuzz-3.14.3-cp312-cp312-win_amd64.whl", hash = "sha256:b5100fd6bcee4d27f28f4e0a1c6b5127bc8ba7c2a9959cad9eab0bf4a7ab3329" },
+    { url = "https://ara-artifactory.volvocars.biz/artifactory/api/pypi/PYPI/packages/packages/fc/6d/beee32dcda64af8128aab3ace2ccb33d797ed58c434c6419eea015fec779/rapidfuzz-3.14.3-cp312-cp312-win_arm64.whl", hash = "sha256:4e49c9e992bc5fc873bd0fff7ef16a4405130ec42f2ce3d2b735ba5d3d4eb70f" },
 ]
 
 [[package]]

@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+
+    participant FE as Frontend
+    participant BE as FastAPI Backend
+    participant DB as User DB
+
+    Note over FE: PASSWORD LOGIN
+    FE->>BE: POST /token (username, password)
+    BE->>BE: Validate password, create JWT
+    BE-->>FE: {access_token: JWT}

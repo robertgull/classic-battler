@@ -7,6 +7,8 @@ from src.repository.pet_data_handler import PetDataHandler
 from src.repository.interface.database import DbBase
 from src.core.models import BattlePet, PetType, Ability
 from src.core.semantic_search import SemanticSearch
+from src.core.fuzzy_search import fuzzy_search_wuzzy, fuzzy_search_rapid
+
 
 def find_types_strong_against(target_type: PetType) -> list[PetType]:
     return [
@@ -162,15 +164,35 @@ class PetManager:
         ids = list(map(int, ids))
         return await self.db.get_abilities_by_ids(ids)
 
+    async def fuzzy_search_abilities(self, query: str) -> list[Ability] | None:
+        abilities = await self.db.get_all_abilities()
+        best_matches = await fuzzy_search_wuzzy(query, abilities)
+        if best_matches is None:
+            return None
 
+        for match in best_matches:
+            print(match)
+        return best_matches
+
+    async def fuzzy_search_abilities_rapid(self, query: str) -> list[Ability] | None:
+        abilities = await self.db.get_all_abilities()
+        best_matches = await fuzzy_search_rapid(query, abilities)
+        if best_matches is None:
+            return None
+
+        for match in best_matches:
+            print(match)
+        return best_matches
 
 # test
 async def main():
     manager = PetManager()
-    print(await manager.list_abilities())
-    await manager.sem_search.set_embeddings()
-    ability_query = "causes target to count as Burning"
-    response = await manager.sem_search_abilities(ability_query)
+    ability_query = "burn"
+    #print("wuzzy")
+    #response = await manager.fuzzy_search_abilities(ability_query)
+    print("rapid")
+    response = await manager.fuzzy_search_abilities_rapid(ability_query)
+    print("response")
     print(response)
 
 if __name__ == "__main__":
